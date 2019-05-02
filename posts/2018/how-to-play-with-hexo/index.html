@@ -1,0 +1,438 @@
+<!DOCTYPE html><html class="theme-next muse use-motion" lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css"><link rel="stylesheet" href="/css/main.css?v=7.1.0"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.1.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.1.0"><link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222"><script id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",version:"7.1.0",sidebar:{position:"left",display:"post",offset:12,onmobile:!1,dimmer:!0},back2top:!0,back2top_sidebar:!1,fancybox:!1,fastclick:!1,lazyload:!0,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><meta name="description" content="之前记录了如何搭建博客、给博客添加评论、如何加速博客访问，然而归根结底，博客还是要被用来写文章、做笔记使用的，这才是前面做的万事所需要的东风。我是在使用 Hexo 之后，才开始用 markdown 写文章做笔记的，那么这次就让我这只小菜鸟分享一下在使用 Hexo 写文的经验和技巧吧~让我们真正滴把博客玩起来！"><meta name="keywords" content="Hexo,writing,post,博客,写作"><meta property="og:type" content="article"><meta property="og:title" content="学会写作和你的Hexo博客一起愉快地玩耍吧ヾ(◍°∇°◍)ﾉﾞ"><meta property="og:url" content="https://11.tt/posts/2018/how-to-play-with-hexo/index.html"><meta property="og:site_name" content="十一種情緒的堆棧"><meta property="og:description" content="之前记录了如何搭建博客、给博客添加评论、如何加速博客访问，然而归根结底，博客还是要被用来写文章、做笔记使用的，这才是前面做的万事所需要的东风。我是在使用 Hexo 之后，才开始用 markdown 写文章做笔记的，那么这次就让我这只小菜鸟分享一下在使用 Hexo 写文的经验和技巧吧~让我们真正滴把博客玩起来！"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://11.tt/posts/2018/how-to-play-with-hexo/how-to-play-with-hexo.jpg"><meta property="og:image" content="https://11.tt/posts/2018/how-to-play-with-hexo/good-baby.jpg"><meta property="og:image" content="https://11.tt/posts/2018/how-to-play-with-hexo/three-pigs.jpg"><meta property="og:image" content="https://11.tt/posts/2018/how-to-play-with-hexo/vscode-terminal.png"><meta property="og:image" content="https://11.tt/posts/2018/how-to-play-with-hexo/create-a-post.png"><meta property="og:image" content="https://11.tt/posts/2018/how-to-play-with-hexo/tab-on-keyboard.png"><meta property="og:image" content="https://11.tt/posts/2018/how-to-play-with-hexo/John-Gruber.jpg"><meta property="og:image" content="https://11.tt/posts/2018/how-to-play-with-hexo/arrow-left.png"><meta property="og:updated_time" content="2019-04-21T06:49:03.190Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="学会写作和你的Hexo博客一起愉快地玩耍吧ヾ(◍°∇°◍)ﾉﾞ"><meta name="twitter:description" content="之前记录了如何搭建博客、给博客添加评论、如何加速博客访问，然而归根结底，博客还是要被用来写文章、做笔记使用的，这才是前面做的万事所需要的东风。我是在使用 Hexo 之后，才开始用 markdown 写文章做笔记的，那么这次就让我这只小菜鸟分享一下在使用 Hexo 写文的经验和技巧吧~让我们真正滴把博客玩起来！"><meta name="twitter:image" content="https://11.tt/posts/2018/how-to-play-with-hexo/how-to-play-with-hexo.jpg"><link rel="alternate" href="/atom.xml" title="十一種情緒的堆棧" type="application/atom+xml"><link rel="canonical" href="https://11.tt/posts/2018/how-to-play-with-hexo/"><script id="page.configurations">CONFIG.page={sidebar:""}</script><title>学会写作和你的Hexo博客一起愉快地玩耍吧ヾ(◍°∇°◍)ﾉﾞ | 十一種情緒的堆棧</title><script async src="//www.googletagmanager.com/gtag/js?id=UA-120626710-1"></script><script>var host=window.location.hostname;if("localhost"!==host){function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-120626710-1")}</script><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">十一種情緒的堆棧</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">别提概念，只解决问题。</p></div><div class="site-nav-toggle"> <button aria-label="切换导航栏"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签<span class="badge">33</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档<span class="badge">8</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>关于</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://11.tt/posts/2018/how-to-play-with-hexo/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Miaia"><meta itemprop="description" content="别提概念，只解决问题。"><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="十一種情緒的堆棧"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">学会写作和你的Hexo博客一起愉快地玩耍吧ヾ(◍°∇°◍)ﾉﾞ</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-09-07 23:00:00" itemprop="dateCreated datePublished" datetime="2018-09-07T23:00:00+08:00">2018-09-07</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a></span></span> <span class="post-comments-count"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span> <span class="post-meta-item-text">评论数：</span><a href="/posts/2018/how-to-play-with-hexo/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/posts/2018/how-to-play-with-hexo/" itemprop="commentCount"></span></a></span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-eye"></i> 阅读次数：<span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body" itemprop="articleBody"><p><img src="/posts/2018/how-to-play-with-hexo/how-to-play-with-hexo.jpg" alt="how-to-play-with-hexo"></p><p>之前记录了如何搭建博客、给博客添加评论、如何加速博客访问，然而归根结底，博客还是要被用来写文章、做笔记使用的，这才是前面做的万事所需要的东风。<br>我是在使用 Hexo 之后，才开始用 markdown 写文章做笔记的，那么这次就让我这只小菜鸟分享一下在使用 Hexo 写文的经验和技巧吧~让我们真正滴把博客玩起来！<br><a id="more"></a></p><hr><p>最近实在是笔头比较懒，距离写<a href="https://11.tt/posts/2018/set-up-cdn-for-hexo/">上一篇文章</a>已经有两个多月的时间了QAQ<br>我想着如果再不继续写得话，可能不久于将来这个博客又要荒废了…为了不再次重蹈覆辙！也为了我存了很多的想要和大家分享的内容！让我们高产起来吧！！！</p><p><img src="/posts/2018/how-to-play-with-hexo/good-baby.jpg" alt="good-baby"></p><p>另外，有些小伙伴说想要看一些不一样的内容~这些都在规划中了哦~再有1-2篇关于 Hexo 的内容就要开始写其他杂七杂八的啦！</p><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>在这篇文章当中，主要会和大家分享一下，我是如何新建文章、如何使用 markdown 的语法撰写文稿、如何在文章中插入图片、如何对图片进行归档、给文章打标签、为文章分类…<br>其实这是一篇早就该发出来的文章，搭建好了博客就像造好了房子，如果不在里面写满精致的文章，就像住在没有装修的毛坯房里，让人很不舒服。<br>那么我们接下来就要给大家介绍一下是如何装修房子的啦！<br>首先，我有一栋这样子条件的毛坯房：</p><pre><code>* Windows 10 1803
+* node-v8.11.2-x64
+* git version 2.17.1.windows.2
+* hexo-v3.7.1
+* NexT.Muse v6.4.1
+</code></pre><p>工欲善其事，必先利其器，要想房子精致美丽，也需要高级的材料，就先看看我用了哪些涂料吧：</p><pre><code>* Visual Studio Code          # 编辑器
+* markdownlint                # 编辑器插件
+* hexo-asset-image            # 文章图片插件
+* hexo-generator-tag          # 标签插件
+</code></pre><p>其中，Visual Studio Code（以下简称 VS Code）这款编辑器好像很火来着，大家应该都不是很陌生；markdownlint 是 VS Code 的一款扩展，直接搜索安装即可，另外两款是通过 npm 安装的 hexo 插件，详细的解释和使用就让我在接下里的文中说明吧~<br>好的，那么接下来，我要开工啦！</p><p><img src="/posts/2018/how-to-play-with-hexo/three-pigs.jpg" alt="three-pigs"></p><hr><h1 id="如何撰写一篇文章"><a href="#如何撰写一篇文章" class="headerlink" title="如何撰写一篇文章"></a>如何撰写一篇文章</h1><p>在这一章节中，我将从新建文章开始，介绍基本的 markdown 语法，让大家快速上手撰写文章~<br>因为我使用的是 VS Code 编辑器，一些快捷键都将以之为准，如果大家使用的是别的编辑器 or 别的环境，请自行在脑海中转义一下哦！🧙‍</p><h2 id="新建一篇文章"><a href="#新建一篇文章" class="headerlink" title="新建一篇文章"></a>新建一篇文章</h2><p>在撰写文章之前，我们得先有一张能让我们挥洒墨水的白纸，那么我们要怎么样才能获得这样一张白纸呢？<br>那就要介绍一下 hexo 中新建文章、页面和草稿的一句命令：</p><pre><code>hexo new [layout] &lt;title&gt;
+</code></pre><p>其中，<code>layout</code>可选的参数为：<code>post</code>、<code>page</code>和<code>draft</code>，我们要新建的是文章，所以要选择的 <code>layout</code> 是 <code>post</code>。<br>然后，我们要按下 <code>ctrl+`</code> 这个快捷键，打开 VS Code内置的终端，像这样：</p><p><img src="/posts/2018/how-to-play-with-hexo/vscode-terminal.png" alt="vscode-terminal"></p><p>接下来，如果我们要新建一篇名为 <code>my first post</code> 的文章，那么我们在其中输入以下格式的命令，然后我们会获得新建文章后所创建 markdown 文件的本地路径：</p><pre><code>$ hexo new post &quot;my first post&quot;
+INFO  Created: D:\myblog\source\_posts\my-first-post.md
+</code></pre><p>从命令执行的输出来看，我们可以很轻松地找到这篇文章在本地的路径，打开后可以看到如下内容：</p><p><img src="/posts/2018/how-to-play-with-hexo/create-a-post.png" alt="create-a-post"></p><p>至此，我们的文章已经新建成功啦~<br>请注意，这里生成文章的文件名可以在站点根目录的 <code>_config.yml</code> 中搜索 <code>Writing</code> 进行设置，具体设置方法以及草稿功能可以在官方文档：<a href="https://hexo.io/zh-cn/docs/writing" target="_blank" rel="noopener">写作|Hexo</a>中找到，此处不多加介绍。</p><h2 id="markdown-的基本语法"><a href="#markdown-的基本语法" class="headerlink" title="markdown 的基本语法"></a>markdown 的基本语法</h2><p>这部分将为大家介绍 markdown 中最基本的一些语法，帮助大家快速写出一篇文章。<br>markdown 的语法大部分都非常简单，一般来说，稍微看一看都能迅速写出文章，但如果不了解一下细节处的规则，那么写出来的文章可能会变得乱七八糟。<del>别问我是怎么知道的TAT</del><br>至于绘制公式、流程图这些功能如果我以后用到的话，会提前在该文章前为大家详细介绍，今天嘛~还是尽快入住新房吧！</p><h3 id="标题语法"><a href="#标题语法" class="headerlink" title="标题语法"></a>标题语法</h3><p>标题的语法是这样的：<br>第一级标题，开头就是一个 <code>#</code><br>第二级标题，开头就是两个 <code>#</code><br>第三级标题，开头就是三个 <code>#</code><br>…<br>请注意，<strong>标题需要独自占据一行，并且在标题的文字和 <code>#</code> 之间需要有一个空格</strong>，不然可能会不被识别的哦！<br>另外，在标题的这一行，上下都需要一个空行分割，虽然不是必要的，但某些很迷的时候会导致标题无法识别。<br>如果使用了 markdownlint 插件，它也会勤奋地告诉大家哒！</p><pre><code># 一级标题
+## 二级标题
+### 三级标题
+#### 四级标题
+##### 五级标题
+###### 六级标题
+...再往下可能就不被支持啦！
+</code></pre><p>同时，大家的主题一般都支持自动生成目录，就像本页的右边→<br><strong>如果大家想要这一类主题的目录生效，请务必使用 <code>#</code> 开头的标题为文章分节哦！</strong></p><h4 id="标题语法演示"><a href="#标题语法演示" class="headerlink" title="标题语法演示"></a>标题语法演示</h4><p>这部分的演示大家就看上面这一堆加粗字并且看起来是标题的吧~同时他们还会显示在右边的目录中，他们就是最好的演示啦！</p><h3 id="引用语法"><a href="#引用语法" class="headerlink" title="引用语法"></a>引用语法</h3><p>大家写着写着文字，突然想要引用一句鲁迅先生的话，但又不是自己说的，于是，这个时候引用语法就派上了用场。<br>引用需要的一个特殊符号是 <code>&gt;</code>，使用方法依旧很简单，<strong>只需要在引用的行首加上 <code>&gt;</code> 就可以啦</strong>！多行引用就在连续的每一行之前都加上 <code>&gt;</code> ~ヾ(◍°∇°◍)ﾉﾞ<br>需要注意的是，引用也是以行为单位的，在行首加上 <code>&gt;</code> 那么整行都被引用啦~在行中加上这个符号是不会出现引用效果的哦！<br>另外，引用行和下方的非引用行之间，如果没有一个空行分割，那么这个非引用行也会被当做引用行哦！</p><pre><code>单行引用：
+&gt; 悲剧将人生的有价值的东西毁灭给人看，喜剧将那无价值的撕破给人看。——鲁迅
+
+多行引用方式一（推荐）：
+&gt; 悲剧将人生的有价值的东西毁灭给人看，喜剧将那无价值的撕破给人看。
+&gt; ————鲁迅
+
+多行引用方式二（不推荐）：
+&gt; 悲剧将人生的有价值的东西毁灭给人看，
+喜剧将那无价值的撕破给人看。
+————鲁迅                            # 这两行由于和上方引用行之间没有空行分隔，也会被当做引用行哦！
+</code></pre><p>另外，引用是支持嵌套结构的，<strong>只要在该行行首添加更多的 <code>&gt;</code> 数量，即可实现嵌套的功能</strong>：</p><pre><code>引用的嵌套结构：
+&gt; 马云说：鲁迅先生曾经说过：
+&gt;&gt; “悲剧将人生的有价值的东西毁灭给人看，喜剧将那无价值的撕破给人看。”
+</code></pre><p>这里不讨论这样的引用是否符合语文文法，仅作示例哦~</p><h4 id="引用语法演示"><a href="#引用语法演示" class="headerlink" title="引用语法演示"></a>引用语法演示</h4><p>单行引用：</p><blockquote><p>悲剧将人生的有价值的东西毁灭给人看，喜剧将那无价值的撕破给人看。——鲁迅</p></blockquote><p>多行引用：</p><blockquote><p>悲剧将人生的有价值的东西毁灭给人看，喜剧将那无价值的撕破给人看。<br>——鲁迅</p></blockquote><p>引用的嵌套结构：</p><blockquote><p>马云说：鲁迅先生曾经说过：</p><blockquote><p>“悲剧将人生的有价值的东西毁灭给人看，喜剧将那无价值的撕破给人看。”</p></blockquote></blockquote><h3 id="代码标记语法"><a href="#代码标记语法" class="headerlink" title="代码标记语法"></a>代码标记语法</h3><p>感觉会来捣腾这样一个博客的，基本都会和程序员搭上点边？？？<br>那么，在自己的文章中把代码高亮出来的这种操作一定也是非常常用啦！<br>在这里，和大家分享三种标记代码的方式：行内代码标记、普通代码块标记和高亮代码块标记。</p><h4 id="行内代码标记语法"><a href="#行内代码标记语法" class="headerlink" title="行内代码标记语法"></a>行内代码标记语法</h4><p>行内的标记语法 <strong>需要通过两个 ` 把需要被标记的内容包起来</strong> ，上文中已经有很多用到的例子啦！<br>如果我们要把行内的 hello world 标记出来，我们就需要这么做：</p><pre><code>我要把这行里的 `hello world` 标记出来。
+</code></pre><h5 id="行内代码标记语法演示"><a href="#行内代码标记语法演示" class="headerlink" title="行内代码标记语法演示"></a>行内代码标记语法演示</h5><p>就像用引号一样使用啦！注意，这个符号就是键盘上在数字 1 左边的那个符号哦！<br><strong>演示：</strong><br>我要把这行里的 <code>hello world</code> 标记出来。</p><h4 id="普通代码块标记语法"><a href="#普通代码块标记语法" class="headerlink" title="普通代码块标记语法"></a>普通代码块标记语法</h4><p>我们只需要将需要标记的代码块选中，然后按下键盘上的 <code>TAB</code> 键，即可完成这段代码的标记.<br><strong>请注意，这样的代码块标记上方和下方都需要一个空行进行分隔，否则会出现各种谜一样的问题哦！</strong><br><code>TAB</code> 键在键盘上的这个位置：</p><p><img src="/posts/2018/how-to-play-with-hexo/tab-on-keyboard.png" alt="tab-on-keyboard"></p><h5 id="普通代码块标记语法演示"><a href="#普通代码块标记语法演示" class="headerlink" title="普通代码块标记语法演示"></a>普通代码块标记语法演示</h5><p>其实在上方已经出现了很多类似的演示啦！为大家随便复制一段代码作为演示：</p><pre><code>var executeSync = function(){
+  var args = Array.prototype.slice.call(arguments);
+  if (typeof args[0] === &apos;function&apos;){
+    args[0].apply(null, args.splice(1));
+  }
+};
+</code></pre><h4 id="高亮代码块标记语法"><a href="#高亮代码块标记语法" class="headerlink" title="高亮代码块标记语法"></a>高亮代码块标记语法</h4><p>这种代码标记的方式可以显示行号，并且可以根据你指定的代码语言对代码进行高亮。<br>为了使用这种标记方式，我们需要在代码块的上方和下方各添加一个以三个反引号开头的行，这个符号也是键盘上数字 1 左侧的符号。<br>同样要注意的是，以三个反引号开头的行上方或者下方都需要一个空行进行分隔，否则会出现各种谜一样的问题哦！<br>然后，在开头行的三个反引号后写上代码所使用的语言即可对代码块进行语法高亮：</p><pre><code>这里有三个反引号
+var executeSync = function(){
+  var args = Array.prototype.slice.call(arguments);
+  if (typeof args[0] === &apos;function&apos;){
+    args[0].apply(null, args.splice(1));
+  }
+};
+这里有三个反引号
+</code></pre><p>hexo + next 好像有个 bug，在代码块里面三个反引号死活打不出来…大家自行翻译一下~</p><h5 id="高亮代码块标记语法演示"><a href="#高亮代码块标记语法演示" class="headerlink" title="高亮代码块标记语法演示"></a>高亮代码块标记语法演示</h5><p>为了能让这代码块正常显示，真的是让我煞费苦心…</p><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> executeSync = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> args = <span class="built_in">Array</span>.prototype.slice.call(<span class="built_in">arguments</span>);</span><br><span class="line">  <span class="keyword">if</span> (<span class="keyword">typeof</span> args[<span class="number">0</span>] === <span class="string">'function'</span>)&#123;</span><br><span class="line">    args[<span class="number">0</span>].apply(<span class="literal">null</span>, args.splice(<span class="number">1</span>));</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><h3 id="列表语法"><a href="#列表语法" class="headerlink" title="列表语法"></a>列表语法</h3><p>往往我们会需要列举一些东西，一二三四五六七什么的，那么我们可以直接使用 <code>[数字].[空格][内容]</code> 的方式来实现：</p><pre><code>1. 你拍一
+2. 我拍二
+3. 她拍三
+</code></pre><p>如果你不想为他们编号，直接使用 <strong>星号</strong> 代替<code>[数字].</code>即可：</p><pre><code>* 你拍一
+* 我拍二
+* 她拍三
+</code></pre><h4 id="列表语法演示"><a href="#列表语法演示" class="headerlink" title="列表语法演示"></a>列表语法演示</h4><p>有编号的列表：</p><ol><li>你拍一</li><li>我拍二</li><li>她拍三</li></ol><p>没有编号的列表：</p><ul><li>你拍一</li><li>我拍二</li><li>她拍三</li></ul><h3 id="表格语法"><a href="#表格语法" class="headerlink" title="表格语法"></a>表格语法</h3><p>不得不说，markdown 中的表格语法就是一个坑啊！！！<br>这里 <strong>推荐</strong> 大家使用 html 代码来生成表格…<br><del>但介绍还是要介绍的…</del><br><em>通过查阅<a href="https://daringfireball.net/projects/markdown/syntax" target="_blank" rel="noopener">Markdown 作者的文档</a>，发现实际上并没有表格的语法，所以此段删除。</em></p><h3 id="链接语法"><a href="#链接语法" class="headerlink" title="链接语法"></a>链接语法</h3><p>生成链接的 markdown 语法共有两种，一种是内联式，另一种是引用式。<br>内联式的链接由连续的一对中括号和一对小括号组成，中括号里的内容是链接显示出来的文字，小括号里的内容是链接的地址，写法如下：</p><pre><code>[这是一个链接](https://11.tt)
+</code></pre><p>而引用式的链接则由像这样连续的两对中括号：</p><pre><code>[这是一个链接][1]
+</code></pre><p>以及像下方这样在文档任意位置的引用标签组成：</p><pre><code>[1]: https://11.tt
+</code></pre><p>综合起来，引用式的写法如下：</p><pre><code>[这是一个链接][1]
+[1]: https://11.tt
+</code></pre><p>此外，如果想要跳转到同一页面中的某个标题处，只需要将链接位置的内容修改为井号加上标题名称即可，像这样：</p><pre><code>[链接语法](#链接语法)
+</code></pre><p>但是，同一页面中链接无法使用引用式！</p><h4 id="链接语法演示"><a href="#链接语法演示" class="headerlink" title="链接语法演示"></a>链接语法演示</h4><p>无论使用哪一种链接语法，出现的样子都是相同的：<br><a href="https://11.tt">这是通往本站首页的链接</a><br><a href="#链接语法">这是通往本章头部的链接</a></p><h3 id="插入图片语法"><a href="#插入图片语法" class="headerlink" title="插入图片语法"></a>插入图片语法</h3><p>向文中插入图片的方式和链接是十分类似的，只需要在链接语法前加上一个 <code>!</code> 即可，其中，中括号中的内容是鼠标移到图片上时显示的描述。<br>像这样：</p><pre><code>![Markdown 创始人 John Gruber](John Gruber.jpg)
+</code></pre><p>也可以是这样：</p><pre><code>![Markdown 创始人 John Gruber][1]
+[1]: John Gruber.jpg
+</code></pre><h4 id="插入图片语法演示"><a href="#插入图片语法演示" class="headerlink" title="插入图片语法演示"></a>插入图片语法演示</h4><p>两种语法显示的图片都是一样的，照片上是 Markdown 的创始人 John Gruber：</p><p><img src="/posts/2018/how-to-play-with-hexo/John-Gruber.jpg" alt="John-Gruber"></p><h4 id="图片插件"><a href="#图片插件" class="headerlink" title="图片插件"></a>图片插件</h4><p>为了更好地整理每一篇文章所使用的图片，我推荐大家使用文章开头提到的 <code>hexo-asset-image</code> 插件。<br>安装方法为：</p><pre><code>$ npm install hexo-asset-image -save
++ hexo-asset-image@0.0.3
+added 13 packages in 6.132s
+</code></pre><p>当我们安装了这个插件后，每一次通过 <code>hexo new post</code> 命令新建文章时，在文章的相同目录都会建立一个与文章同名的文件夹。<br>在这个文件夹中的图片相对于文章都是相同目录，可以直接使用图片名作为图片链接直接引用该图片。</p><h2 id="生成并发布写好的文章"><a href="#生成并发布写好的文章" class="headerlink" title="生成并发布写好的文章"></a>生成并发布写好的文章</h2><p>其实这一步在我的第一篇文章里面已经做过详细介绍啦！<strong><a href="https://11.tt/posts/2018/set-up-Hexo-with-Coding-Github-https/#%E7%94%9F%E6%88%90%E5%B9%B6%E8%BF%90%E8%A1%8C%E5%8D%9A%E5%AE%A2">→传送门←</a></strong><br>我们使用命令 <code>hexo g</code> 即可生成我们刚刚写好的文章<br>然后通过命令 <code>hexo d</code> 即可发布到我们的 Coding 或者 Github 的 Pages 服务上去。<br>这里就不详细描述了，忘记的同学可以通过上方的传送门穿越时空去复习哦！</p><hr><h1 id="如何为文章添加分类"><a href="#如何为文章添加分类" class="headerlink" title="如何为文章添加分类"></a>如何为文章添加分类</h1><p>这时候我们需要回到文章的头部，在生成完文章时，hexo 自动为我们的文章头部生成了如下的内容：</p><pre><code>---
+title: my first post
+date: 2018-09-09 16:00:00
+---
+</code></pre><p>其中，<code>title</code> 是文章的标题，<code>date</code> 是文章的建立时间，都是可以自定义的。<br><em>那么，我们要如何为文章分类呢？</em><br>类似的，我们只需要用到 <code>categories</code> 这个关键词，在冒号后自定义分类名即可，就像下方写的：</p><pre><code>---
+title: my first post
+date: 2018-09-09 16:00:00
+categories: Hexo
+---
+</code></pre><p>这样我就将 <code>my first post</code> 这篇文章添加到了 <code>Hexo</code> 这个分类当中去了。<br><strong>那么！！</strong>我们又要如何查看这些分类呢？<br>这时候，我们要再次使用到 <code>hexo new</code> 这句命令了。<br>不过和上方新建文章不同的是，这次我们要新建的是一个页面，那么我们要使用的命令是：</p><pre><code>$ hexo new page categories
+INFO  Created: D:\myblog\source\categories\index.md
+</code></pre><p>同样的，在建立页面完后，输出了页面的路径。<br>这个页面拥有独立的文件夹，以及包含页面内容的 <code>index.md</code> 文件。<br>这时候打开这个页面仍然只是一个普通的页面而已，那该如何让这个页面显示文章分类呢？<br>我们打开刚刚新建的 <code>index.md</code> 文件可以看到如同一片普通文章开头的内容：</p><pre><code>---
+title: categories
+date: 2018-09-10 21:17:08
+---
+</code></pre><p>我们需要为它添加 <code>type</code> 关键字，让它知道自己到底是个什么身份（笑），就像这样：</p><pre><code>---
+title: categories
+date: 2018-09-10 21:17:08
+type: categories
+comments: false
+---
+</code></pre><p>其中，<code>comments</code> 关键字是用来设置该页面是否允许评论的，如果你启用了评论功能，那么可以自定义这些页面是否支持评论。<br>然后，在站点的 <code>_config.yml</code> 文件中搜索 <code>category_dir</code> 可以找到如下内容：</p><pre><code>...
+archive_dir: archives
+category_dir: categories
+code_dir: downloads/code
+...
+</code></pre><p>这里已经设置了文章分类文件夹的名称，如果你的文章分类页不叫 <code>categories</code>，那么你需要将其修改为对应的名称。<br>这时候，再次执行 <code>hexo g &amp;&amp; hexo s</code> 命令，并打开你的页面，点击主题里文章分类的链接，即可看到文章的分类啦！</p><hr><h1 id="如何为文章添加标签"><a href="#如何为文章添加标签" class="headerlink" title="如何为文章添加标签"></a>如何为文章添加标签</h1><p>给文章添加标签的方式和添加分类类似，但一篇文章可以有多个标签。<br>我们需要再次回到文章的头部，如果你已经为文章设置了分类，那么文章头部应该是类似这样的：</p><pre><code>---
+title: my first post
+date: 2018-09-09 16:00:00
+categories: Hexo
+---
+</code></pre><p>我们只需要向其中再添加一个关键词 <code>tags</code>，这个关键词可以是数组型的，就像这样：</p><pre><code>---
+title: my first post
+date: 2018-09-09 16:00:00
+categories: Hexo
+tags: [Hexo, writing, post, 博客, 写作]
+---
+</code></pre><p>这样我就为 <code>my first post</code> 这篇文章添加了多个标签。<br><strong>那么！！</strong><del>又来了</del>我们又要如何查看这些标签呢？<br>我们再次使用 <code>hexo new</code> 这句命令新建一个页面：</p><pre><code>$ hexo new page tags
+INFO  Created: D:\myblog\source\tags\index.md
+</code></pre><p>同样的，在建立页面完后，为 <code>tags\index.md</code> 文件头部添加 <code>type</code> 关键字：</p><pre><code>---
+title: tags
+date: 2018-09-10 21:33:30
+type: tags
+comments: false
+---
+</code></pre><p>同样可以在在站点的 <code>_config.yml</code> 文件中找到如下内容：</p><pre><code>...
+public_dir: public
+tag_dir: tags
+archive_dir: archives
+...
+</code></pre><p>可是，当我们再次执行 <code>hexo g &amp;&amp; hexo s</code> 命令后，打开页面主题里文章标签的链接，却并没有看到我们想看到的样子？？？<br>这时候，神奇的插件再次出马了，我们通过命令安装 <code>hexo-generator-tag</code> 插件：</p><pre><code>$ npm install hexo-generator-tag -save
++ hexo-generator-tag@0.2.0
+updated 1 package in 3.599s
+</code></pre><p>然后，我们再次执行 <code>hexo g &amp;&amp; hexo s</code> 命令，打开页面主题里文章标签的链接，看，是不是看到了好多的标签呀？！<br>其中，<code>hexo-generator-tag</code> 插件能将我们文章中的标签进行统计，并将页面 <code>type</code> 为 <code>tags</code> 的设置为显示标签的页面。</p><hr><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>好啦！今天的分享大会就开到这里！<br>通过这些简单的语法，应该可以应对大部分简单的文章撰写需求啦！<br>顺便，一如既往地，附上官方文档，其实就是作者的博客啦！<a href="https://daringfireball.net/projects/markdown/syntax" target="_blank" rel="noopener">Markdown 作者的文档</a><br>顺带贴上中文版的地址：<a href="https://markdown-zh.readthedocs.io/en/latest/" target="_blank" rel="noopener">Markdown 中文文档</a></p><hr><p>对了！！！你们有没有注意到左下角的神奇魔法呀！！！</p><p><img src="/posts/2018/how-to-play-with-hexo/arrow-left.png" alt="arrow-left"></p><p>哈哈哈哈哈哈哈厉害吧！！！୧(๑•̀◡•́๑)૭<br>剧透一下，下一篇文章就教大家如何添加这只哦！！！<br><strong>敬请期待！！</strong></p></div><div><div id="reward-container"><div>坚持原创！欢迎各位客官给我打赏买小饼干吖！✿✿ヽ(°▽°)ノ✿</div> <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';"> 打赏</button><div id="qr" style="display:none"><div style="display:inline-block"> <img src="/images/wechatpay.png" alt="Miaia 微信支付"><p>微信支付</p></div><div style="display:inline-block"> <img src="/images/alipay.png" alt="Miaia 支付宝"><p>支付宝</p></div></div></div></div><div><ul class="post-copyright"><li class="post-copyright-author"> <strong>本文作者：</strong> Miaia</li><li class="post-copyright-link"> <strong>本文链接：</strong> <a href="https://11.tt/posts/2018/how-to-play-with-hexo/" title="学会写作和你的Hexo博客一起愉快地玩耍吧ヾ(◍°∇°◍)ﾉﾞ">https://11.tt/posts/2018/how-to-play-with-hexo/</a></li><li class="post-copyright-license"> <strong>版权声明：</strong> 本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div><footer class="post-footer"><div class="post-tags"> <a href="/tags/Hexo/" rel="tag"># Hexo</a> <a href="/tags/writing/" rel="tag"># writing</a> <a href="/tags/post/" rel="tag"># post</a> <a href="/tags/博客/" rel="tag"># 博客</a> <a href="/tags/写作/" rel="tag"># 写作</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/posts/2018/set-up-cdn-for-hexo/" rel="next" title="使用CDN让你的Hexo博客拥有飞一般的体验"><i class="fa fa-chevron-left"></i> 使用CDN让你的Hexo博客拥有飞一般的体验</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/posts/2018/how-to-play-with-live2d-on-hexo/" rel="prev" title="用Live2D让看板喵入住你的Hexo博客吧\(^o^)/~">用Live2D让看板喵入住你的Hexo博客吧\(^o^)/~<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> 站点概览</li></ul><div class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Miaia"><p class="site-author-name" itemprop="name">Miaia</p><div class="site-description motion-element" itemprop="description">别提概念，只解决问题。</div></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">8</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/"><span class="site-state-item-count">2</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/"><span class="site-state-item-count">33</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/miaia" title="GitHub &rarr; https://github.com/miaia" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i> GitHub</a></span><span class="links-of-author-item"><a href="mailto:1@11.tt" title="E-Mail &rarr; mailto:1@11.tt"><i class="fa fa-fw fa-envelope"></i> E-Mail</a></span></div><div class="cc-license motion-element" itemprop="license"> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a></div></div></div><div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何撰写一篇文章"><span class="nav-number">2.</span> <span class="nav-text">如何撰写一篇文章</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#新建一篇文章"><span class="nav-number">2.1.</span> <span class="nav-text">新建一篇文章</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#markdown-的基本语法"><span class="nav-number">2.2.</span> <span class="nav-text">markdown 的基本语法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标题语法"><span class="nav-number">2.2.1.</span> <span class="nav-text">标题语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#标题语法演示"><span class="nav-number">2.2.1.1.</span> <span class="nav-text">标题语法演示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用语法"><span class="nav-number">2.2.2.</span> <span class="nav-text">引用语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#引用语法演示"><span class="nav-number">2.2.2.1.</span> <span class="nav-text">引用语法演示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#代码标记语法"><span class="nav-number">2.2.3.</span> <span class="nav-text">代码标记语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#行内代码标记语法"><span class="nav-number">2.2.3.1.</span> <span class="nav-text">行内代码标记语法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#行内代码标记语法演示"><span class="nav-number">2.2.3.1.1.</span> <span class="nav-text">行内代码标记语法演示</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#普通代码块标记语法"><span class="nav-number">2.2.3.2.</span> <span class="nav-text">普通代码块标记语法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#普通代码块标记语法演示"><span class="nav-number">2.2.3.2.1.</span> <span class="nav-text">普通代码块标记语法演示</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高亮代码块标记语法"><span class="nav-number">2.2.3.3.</span> <span class="nav-text">高亮代码块标记语法</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#高亮代码块标记语法演示"><span class="nav-number">2.2.3.3.1.</span> <span class="nav-text">高亮代码块标记语法演示</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列表语法"><span class="nav-number">2.2.4.</span> <span class="nav-text">列表语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#列表语法演示"><span class="nav-number">2.2.4.1.</span> <span class="nav-text">列表语法演示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#表格语法"><span class="nav-number">2.2.5.</span> <span class="nav-text">表格语法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#链接语法"><span class="nav-number">2.2.6.</span> <span class="nav-text">链接语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#链接语法演示"><span class="nav-number">2.2.6.1.</span> <span class="nav-text">链接语法演示</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入图片语法"><span class="nav-number">2.2.7.</span> <span class="nav-text">插入图片语法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#插入图片语法演示"><span class="nav-number">2.2.7.1.</span> <span class="nav-text">插入图片语法演示</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#图片插件"><span class="nav-number">2.2.7.2.</span> <span class="nav-text">图片插件</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成并发布写好的文章"><span class="nav-number">2.3.</span> <span class="nav-text">生成并发布写好的文章</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何为文章添加分类"><span class="nav-number">3.</span> <span class="nav-text">如何为文章添加分类</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#如何为文章添加标签"><span class="nav-number">4.</span> <span class="nav-text">如何为文章添加标签</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div></div></div></div></aside><div id="sidebar-dimmer"></div></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span><span class="with-love" id="animate"><i class="fa fa-fas fa-heartbeat"></i></span> <span class="author" itemprop="copyrightHolder">Miaia</span></div><div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.7.1</div> <span class="post-meta-divider">|</span><div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> <span class="site-pv" title="总访问量">栈内已经接待了<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>个元素啦w</span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script>"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script src="//cdn.jsdelivr.net/npm/jquery@2/dist/jquery.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js"></script><script src="/js/utils.js?v=7.1.0"></script><script src="/js/motion.js?v=7.1.0"></script><script src="/js/schemes/muse.js?v=7.1.0"></script><script src="/js/scrollspy.js?v=7.1.0"></script><script src="/js/post-details.js?v=7.1.0"></script><script src="/js/next-boot.js?v=7.1.0"></script><script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST=["nick","mail","link"],guest="nick,mail,link";guest=guest.split(",").filter(function(e){return-1<GUEST.indexOf(e)}),new Valine({el:"#comments",verify:!0,notify:!0,appId:"1737M61wconDeU7FLHRpwTiD-gzGzoHsz",appKey:"7exFFNYzJ6C9nWOlA0axIWu1",placeholder:"ヾﾉ≧∀≦)o来啊，快活啊!",avatar:"mm",meta:guest,pageSize:"10",visitor:!1,lang:"zh-cn"})</script><script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1/bookmark.min.js"></script><script>bookmark.scrollToMark("auto","#更多")</script><script>!function(a,t,c){t.ChatraID="";var h=a.createElement("script");t[c]=t[c]||function(){(t[c].q=t[c].q||[]).push(arguments)},h.async=!0,h.src="https://call.chatra.io/chatra.js",a.head&&a.head.appendChild(h)}(document,window,"Chatra")</script><script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.0.5/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{scale:1,hHeadPos:.5,vHeadPos:.618,jsonPath:"/live2dw/assets/Pio.model.json"},display:{superSample:2,width:150,height:150,position:"left",hOffset:30,vOffset:-20},mobile:{show:!1,scale:.05},react:{opacityDefault:1,opacityOnHover:.2},log:!1})</script></body></html>

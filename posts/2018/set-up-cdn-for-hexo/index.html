@@ -1,0 +1,350 @@
+<!DOCTYPE html><html class="theme-next muse use-motion" lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css"><link rel="stylesheet" href="/css/main.css?v=7.1.0"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.1.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.1.0"><link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222"><script id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",version:"7.1.0",sidebar:{position:"left",display:"post",offset:12,onmobile:!1,dimmer:!0},back2top:!0,back2top_sidebar:!1,fancybox:!1,fastclick:!1,lazyload:!0,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><meta name="description" content="无论是使用 coding 还是 Github 来进行个人博客的托管都会有一个小小的问题，就是访问速度真的是好慢啊QAQ！而如果将很多的资源比如 css、js 以及图片文件使用 CDN 来进行分发，就能使网站的打开速度变得无比顺滑，体验飞一般的感觉！"><meta name="keywords" content="Hexo,cdn,腾讯云,cloud,cos,加速,访问速度,速度"><meta property="og:type" content="article"><meta property="og:title" content="使用CDN让你的Hexo博客拥有飞一般的体验"><meta property="og:url" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/index.html"><meta property="og:site_name" content="十一種情緒的堆棧"><meta property="og:description" content="无论是使用 coding 还是 Github 来进行个人博客的托管都会有一个小小的问题，就是访问速度真的是好慢啊QAQ！而如果将很多的资源比如 css、js 以及图片文件使用 CDN 来进行分发，就能使网站的打开速度变得无比顺滑，体验飞一般的感觉！"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/set-up-cdn-for-hexo.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/sad-is-so-big.jpg"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/what-kind-of-process.jpg"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/tencent-cloud-global-facilities.jpg"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/create-bucket-overview.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/create-bucket-detail.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/bucket-overview.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/upload-assets.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/uploading-files.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/files-uploaded.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/origin-overview.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/find-origin-overview.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/origin-detail.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/origin-done.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/cdn-add-domain-overview.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/cdn-add-domain-detail.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/cdn-add-domain-success.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/set-up-cdn-overview.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/set-up-cdn-authcontrol.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/set-up-cdn-origin.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-overview.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-first.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-second-applyssl-overview.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-second-choose-ssltype.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-second-applyssl-detail.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-second-applyssl-check.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-second-overview.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-second-detail.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-third.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-fourth-overview.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-fourth-detail.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-done.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/bootcdn.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/cdnjs.png"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/jsdelivr.jpg"><meta property="og:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/check-success.png"><meta property="og:updated_time" content="2019-04-21T06:49:03.334Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="使用CDN让你的Hexo博客拥有飞一般的体验"><meta name="twitter:description" content="无论是使用 coding 还是 Github 来进行个人博客的托管都会有一个小小的问题，就是访问速度真的是好慢啊QAQ！而如果将很多的资源比如 css、js 以及图片文件使用 CDN 来进行分发，就能使网站的打开速度变得无比顺滑，体验飞一般的感觉！"><meta name="twitter:image" content="https://11.tt/posts/2018/set-up-cdn-for-hexo/set-up-cdn-for-hexo.png"><link rel="alternate" href="/atom.xml" title="十一種情緒的堆棧" type="application/atom+xml"><link rel="canonical" href="https://11.tt/posts/2018/set-up-cdn-for-hexo/"><script id="page.configurations">CONFIG.page={sidebar:""}</script><title>使用CDN让你的Hexo博客拥有飞一般的体验 | 十一種情緒的堆棧</title><script async src="//www.googletagmanager.com/gtag/js?id=UA-120626710-1"></script><script>var host=window.location.hostname;if("localhost"!==host){function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-120626710-1")}</script><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">十一種情緒的堆棧</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">别提概念，只解决问题。</p></div><div class="site-nav-toggle"> <button aria-label="切换导航栏"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签<span class="badge">33</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档<span class="badge">8</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>关于</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://11.tt/posts/2018/set-up-cdn-for-hexo/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Miaia"><meta itemprop="description" content="别提概念，只解决问题。"><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="十一種情緒的堆棧"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">使用CDN让你的Hexo博客拥有飞一般的体验</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-07-01 09:10:02" itemprop="dateCreated datePublished" datetime="2018-07-01T09:10:02+08:00">2018-07-01</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a></span></span> <span class="post-comments-count"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span> <span class="post-meta-item-text">评论数：</span><a href="/posts/2018/set-up-cdn-for-hexo/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/posts/2018/set-up-cdn-for-hexo/" itemprop="commentCount"></span></a></span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-eye"></i> 阅读次数：<span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body" itemprop="articleBody"><p><img src="/posts/2018/set-up-cdn-for-hexo/set-up-cdn-for-hexo.png" alt="set-up-cdn-for-hexo"></p><p>无论是使用 coding 还是 Github 来进行个人博客的托管都会有一个小小的问题，就是访问速度真的是好慢啊QAQ！而如果将很多的资源比如 css、js 以及图片文件使用 CDN 来进行分发，就能使网站的打开速度变得无比顺滑，体验飞一般的感觉！<br><a id="more"></a></p><h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p><strong>在阅读下文之前，如果你还不知道 CDN 是个什么东东，为了不大篇幅引用，请移步<a href="https://baike.baidu.com/item/CDN" target="_blank" rel="noopener">百度百科：CDN词条</a>进行一些了解~</strong><br><em>本文仅仅是为了加速网站的访问，增强用户体验，并不是必须配置的哦！</em><br>首先要说一下我这篇文章的适用人群。<br>首先我们知道，很多的拥有 <code>对象存储</code> 服务的云服务商(如腾讯云)，都能够提供静态网站的托管，就类似 coding 和 Github，只是要将每一次生成的静态资源都上传到自己的存储桶中，然后使用 <code>CDN 服务</code> 将 <code>对象存储</code> 中的内容进行分发，这样就可以非常容易地完成个人博客的全站 CDN。<br><strong>然而！</strong><br>如果使用国内的 <code>CDN 服务</code> 来进行静态网站托管，域名必须要备案，而根据<a href="http://www.miit.gov.cn/n1146285/n1146352/n3054355/n3057709/n3057722/c5930543/content.html" target="_blank" rel="noopener">工业和信息化部关于规范互联网信息服务使用域名的通知</a>，只有过审的域名后缀才可以备案(<a href="http://www.miit.gov.cn/n1146285/n1146352/n3054355/n3057709/n3057722/c4377447/content.html" target="_blank" rel="noopener">点此查看可以备案的域名后缀</a>)，比如我的域名后缀 <code>.tt</code> 就不在此列😥。</p><p><img src="/posts/2018/set-up-cdn-for-hexo/sad-is-so-big.jpg" alt="sad-is-so-big"></p><p><strong>那么就尴尬了😅…</strong><br>既然我的域名后缀无法备案，那么就没办法直接使用上述方法进行全站 CDN 了。<br>于是，我使用了一种曲线救国的方式来完成这样的 <strong>操作</strong> 。</p><p><img src="/posts/2018/set-up-cdn-for-hexo/what-kind-of-process.jpg" alt="what-kind-of-process"></p><p>我备案了一个符合要求后缀的域名，然后将所有的 css、js 以及图片文件等放到该域名对应的存储桶下，然后在 Hexo 网站中调用这个资源域名下对应的静态资源以达到无备案启用 CDN 的目的。<br><strong>另外！</strong><br>对于我们的 Hexo 博客来说：<br><em>首先，我们主要只需要将图片资源使用 CDN 来进行分发，如果进行全站 CDN(包括 css, js 等其他静态资源)，那么会有一笔额外的流量开支(虽然现在也没多少人访问QAQ，不过蚊子再小也是肉嘛！说不定有一天我火了呢！hhh)，况且，自己的 CDN 也未必有公共前端资源来得更快。</em><br><em>然后， HTTP协议对同一个域名的同时下载线程数有限制。主要是为了优化下载速度，防止同一域名下下载线程数过多，导致下载速度变慢。各个浏览器都会遵守这个规定，但是限制的数目可能不一致。基于这个原因，可将资源部署于不同的域名，以达到最大化并发下载。</em><br><em>最后，使用不同的域名可以实现静态资源和动态资源的分离，有利于 CDN 的部署，这段话是抄来改了改的QAQ(作者：ziwozizhan，原始链接：<a href="https://blog.csdn.net/ziwozizhan/article/details/53420501" target="_blank" rel="noopener">https://blog.csdn.net/ziwozizhan/article/details/53420501</a>)，虽然我们的 Hexo 博客全是静态的…</em><br>这些都是使用独立的域名进行静态资源部署的优点~<br><strong>那么！</strong><br>如果你有我这样的烦恼，或者你想要将静态资源使用不同的域名进行 CDN 部署，那么相信我！<strong>你找对了教程！(#^.^#)</strong><br>事不宜迟，我们赶紧开始吧！</p><hr><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>各位客官大家建党节快乐！<code>咚咚咚</code> 敲黑板！Miaia 老师的 Hexo 小课堂又开课啦！<br>同样的，我们还是先说一下本文配置 CDN 所使用的环境：</p><pre><code>* Windows 10 1803
+* hexo-v3.7.1 + NexT.Muse v6.3.0
+* node-v8.11.2-x64
+* git version 2.17.1.windows.2
+* 还是小可爱一枚
+</code></pre><p>在本文的配置中，我将腾讯云的<a href="https://cloud.tencent.com/product/cos" target="_blank" rel="noopener">对象存储</a>和 <a href="https://cloud.tencent.com/product/cdn" target="_blank" rel="noopener">CDN服务</a>搭配使用以进行 CDN 的部署(<strong>主要是图片资源</strong>)。另外，为了节约部分流量，我分别使用了国内和国外的 <strong>前端公共静态库</strong> 对国内(coding)和国外(Github)不同代码托管库中部分 css、js 文件进行公共 CDN 加速，这部分在 NexT 主题中已经被完美滴独立开来，非常容易配置。</p><p><img src="/posts/2018/set-up-cdn-for-hexo/tencent-cloud-global-facilities.jpg" alt="tencent-cloud-global-facilities"></p><p>如果你使用的不是 NexT 主题，只要将用到的静态资源链接直接更换即可，同样非常方便。<br>BTW，海外的静态资源(即Github上的静态资源)由于价格(<strong>腾讯云送了我贼多 CDN 流量</strong>)和服务商的选择问题(<strong>腾讯云海外加速公测申请还没通过</strong>)，我暂时没有进行 CDN 配置，等待以后配置了也会更新文章，但我估计和国内的没有多大区别hhh~<br>好啦！介绍完了背景和使用的服务，让我们正式开课吧！</p><hr><h1 id="基于腾讯云部署-CDN"><a href="#基于腾讯云部署-CDN" class="headerlink" title="基于腾讯云部署 CDN"></a>基于腾讯云部署 CDN</h1><p>在这个章节当中，主要会给大家介绍基于腾讯云对象存储和 CDN 服务来对我们的 Hexo 博客进行 CDN 的部署。<br><strong>在继续之前有一点需要对大家进行提醒：本文中需要一个已经完成备案的域名，由于各地备案要求不一样，所需备案时间也不一样，但一般都至少需要三个工作日，为了不让大家配着配着扫兴，那么请注意，如果你还没有一个完成备案的域名，你可能不能在阅读本文的同时完成 CDN 的部署，你可以先行ICP备案，然后再来继续这篇文章的教程哟！(＾Ｕ＾)ノ~ＹＯ</strong><br>请大家提前注册好腾讯云的账号哈~放上官网链接：<a href="https://cloud.tencent.com/" target="_blank" rel="noopener">腾讯云(https://cloud.tencent.com/)</a></p><h2 id="对象存储部署"><a href="#对象存储部署" class="headerlink" title="对象存储部署"></a>对象存储部署</h2><h3 id="创建存储桶"><a href="#创建存储桶" class="headerlink" title="创建存储桶"></a>创建存储桶</h3><p>首先我们打开存储桶列表的页面：<a href="https://console.cloud.tencent.com/cos5/bucket" target="_blank" rel="noopener">存储桶列表</a><br>打开后我们可以看到这样的界面：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/create-bucket-overview.png" alt="create-bucket-overview"></p><p>我们点击上图中右侧红框“<strong>创建存储桶</strong>”来进行创建，会得到一个框框，在框框离可以看到以下内容：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/create-bucket-detail.png" alt="create-bucket-detail"></p><p>其中，用红框标注的部分需要被选择为“<strong>公有读私有写</strong>”，名称可以进行 <strong>自定义</strong> ，所属地域为了方便我们自己使用，我们可以 <strong>选择离自己比较近的位置</strong> ，填写完成后点击确定，至此，我们已经完成了存储桶的创建。</p><h3 id="上传静态资源"><a href="#上传静态资源" class="headerlink" title="上传静态资源"></a>上传静态资源</h3><p>在完成存储桶创建后(即点击上图中确定后)，页面会自动跳转成下图中的页面，我们在跳转后点击下图红框中的“<strong>上传文件</strong>”：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/bucket-overview.png" alt="bucket-overview"></p><p>在点击上图中的上传文件后，我们可以下图左侧的框框，与此同时，我们进入到博客根目录下的“<strong>public</strong>”文件夹，public 文件夹中的内容可能类似下图右侧资源管理器中的列表。<br><strong>注：public 文件夹中的内容是我们执行 hexo c &amp;&amp; hexo g 后获得的文件夹，即上传到 coding 和 Github上的文件夹。</strong><br>为了使教程受用范围更广，并且不造成混淆，以及方便下文中的配置，此处我将整个博客由 hexo 生成的所有内容(即整个 public 文件夹)全部上传到存储桶中，知道哪些需要哪些不需要的同学可以根据自己的实际情况进行筛选。<br>我们将下图右侧资源管理器中所有内容全选，用鼠标拖到左侧框框中去，然后点击下方的“上传”按钮，即可进行整个博客资源的上传：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/upload-assets.png" alt="upload-assets"></p><p>下图是点击“<strong>上传</strong>”按钮的状态，可以看到页面右上角有上传的进度，根据个人网速和存储桶位置快慢不同，但因为总量不会很大，所以一般都挺快的。</p><p><img src="/posts/2018/set-up-cdn-for-hexo/uploading-files.png" alt="uploading-files"></p><p>在上传完成后，我们可以看到类似下图这样的一个目录结构：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/files-uploaded.png" alt="files-uploaded"></p><h3 id="存储桶回源配置"><a href="#存储桶回源配置" class="headerlink" title="存储桶回源配置"></a>存储桶回源配置</h3><p>我们已经完成了静态资源的上传，接下来为了防止在资源尚未上传到存储桶时，造成页面请求的静态资源 404 ，我们需要为该存储桶配置一下回源功能。<br>在上文中相同页面，点击下图红框中的“<strong>基础配置</strong>”标签：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/origin-overview.png" alt="origin-overview"></p><p>将该标签页拖到最下方，我们可以看到下图红框中的“<strong>回源设置</strong>”：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/find-origin-overview.png" alt="find-origin-overview"></p><p>点击上图中红框内的“<strong>编辑</strong>”按钮，按下图中配置，请注意，在红色箭头位置填写你自己博客的域名，然后点击保存：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/origin-detail.png" alt="origin-detail"></p><p>然后我们的回源设置就已经配置完成了：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/origin-done.png" alt="origin-done"></p><p>至此，我们对象存储部分已经全部配置完成了，仔细好学的你可能会发现这里有跨域访问CORS设置和防盗链等设置。<br><strong>恭喜你！都学会抢答啦！</strong><br><strong>但是！</strong>本文是要进行 CDN 的部署，而在下文中，CDN 配置中也有相关内容的配置，并且优先级比存储桶的配置更高，所以偷个懒，索性在 CDN 部署中直接进行配置。<br>不要心急哦！✿✿ヽ(°▽°)ノ✿ 继续继续！</p><h2 id="CDN-服务部署"><a href="#CDN-服务部署" class="headerlink" title="CDN 服务部署"></a>CDN 服务部署</h2><p>哇！终于到本文的最核心部分了！虽然少了哪一部分都不能正常运作，但是到这里还是很激动哒！😸</p><h3 id="添加-CDN-域名"><a href="#添加-CDN-域名" class="headerlink" title="添加 CDN 域名"></a>添加 CDN 域名</h3><p>还是先直接进入到腾讯云 CDN 域名管理的页面：<a href="https://console.cloud.tencent.com/cdn/access" target="_blank" rel="noopener">CDN 域名管理</a><br>我们可以看到如下页面，点击下图红框中的“<strong>添加域名</strong>”：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/cdn-add-domain-overview.png" alt="cdn-add-domain-overview"></p><p>然后我们就可以看到一个拥有“<strong>域名配置</strong>”和“<strong>加速服务配置</strong>”这两个标签卡的页面~</p><p><img src="/posts/2018/set-up-cdn-for-hexo/cdn-add-domain-detail.png" alt="cdn-add-domain-detail"></p><p>其中红框中的部分需要我们进行修改。修改说明如下：</p><ol><li><strong>第一个红框中填写的域名必须已经备案！否则无法添加！并且该 CDN 域名是<em>必要</em>的！请务必注意！</strong><br><a href="https://cloud.tencent.com/document/product/243" target="_blank" rel="noopener">备案教程请点击此处</a></li><li>第二个红框下拉栏中请选择“<strong>对象存储（COS）</strong>”</li><li>第三个红框中请选择我们在“<a href="#创建存储桶">创建存储桶</a>”章节中所创建存储桶的 <strong>存储桶访问域名</strong> 。</li></ol><p>除了红框中的内容，其余所有部分保持默认即可，点击“<strong>提交</strong>”添加域名，如果填写的没有问题(主要是域名备案问题)，我们就可以看到如下弹出框：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/cdn-add-domain-success.png" alt="cdn-add-domain-success"></p><p>至此，CDN 域名已经添加成功啦~🤩</p><h3 id="配置-CDN-域名"><a href="#配置-CDN-域名" class="headerlink" title="配置 CDN 域名"></a>配置 CDN 域名</h3><p>我们需要对该 CDN 域名进行一下简单的配置以完善整个功能。<br>点击上图中的“<strong>更多配置</strong>”按钮，我们可以进入到以下页面：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/set-up-cdn-overview.png" alt="set-up-cdn-overview"></p><p>在该页面顶部位置，我们可以看到“基本配置”、“访问控制”、“缓存控制”、“回源配置”、“安全配置”和“高级配置”共六个标签页。<br>我们要对其中的“访问控制”、“回源配置”和“高级配置”三个标签页进行 <strong>很多项</strong> 的配置。<br>因为配置项比较多，所以就不一一进行列举了，我分别将每个标签页中内容用红框标注出来，红框中的内容是已经配置完成的样子，并且我会在下方附上这样配置的说明。</p><h4 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h4><p>首先，“<strong>访问控制</strong>”标签页，一共有三个选项需要修改，分别对应三个红框中的内容：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/set-up-cdn-authcontrol.png" alt="set-up-cdn-authcontrol"></p><ol><li>第一个红框中“<strong>过滤参数</strong>”，一般来说<em>若资源URL中不同参数代表相同的内容，开启过滤参数，可以有效提升缓存命中率。</em>但对我们的静态站点来说并不需要这个选项，开启反而可能造成问题，一般这里默认是关的，如果它不小心弹开了，把它关闭即可。</li><li>第二个红框中“<strong>防盗链配置</strong>”就是我们<a href="#存储桶回源配置">上文存储桶配置</a>中并没有进行的操作，我们务必在这里进行白名单配置，否则如果被别人(一般也不会有…)盗链，那么会消耗你的 CDN 流量，这可都是白花花的银子呀~请在白名单中添加你的博客域名。</li><li>第三个红框中“<strong>IP访问限频配置</strong>”，这个是为了防止CC攻击，但我们的网站挂在 coding 和 Github 上应该没事？我也不是很懂，但不怕一万就怕万一，还是开启比较好。其中QPS需要稍微调大一点，否则如果你设置为10，而你一个页面请求的静态资源超过10个，那么多余的部分就会有 514 HTTP状态码，如果按照本文进行配置后，你发现你的网页显示不正常，而某些资源的状态码是514，<strong>那么很可能就是这里设置的原因</strong>。</li></ol><h4 id="回源配置"><a href="#回源配置" class="headerlink" title="回源配置"></a>回源配置</h4><p>然后是“<strong>回源配置</strong>”标签页，只有一个配置需要打开，如下图红框中所示：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/set-up-cdn-origin.png" alt="set-up-cdn-origin"></p><p>其中，回源跟踪301/301的解释请见官方文档：<a href="https://cloud.tencent.com/document/product/228/7183" target="_blank" rel="noopener">什么是回源跟随301/302</a>，反正挺高级的，感觉开了更好不开也没事O(∩_∩)O哈哈哈哈哈</p><h4 id="高级配置"><a href="#高级配置" class="headerlink" title="高级配置"></a>高级配置</h4><p>最后到了“<strong>高级配置</strong>”标签页，这部分的每一个内容都需要配置，并且涉及到申请https证书的部分需要跳转到证书管理进行配置，所以这部分进行详细说明，内容较多但不复杂，请耐心往下看哦~(づ￣3￣)づ╭❤～<br>我们先看一下配置之前这个标签页是什么样子的：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-overview.png" alt="set-up-cdn-senior-overview"></p><p>我们正式开始配置啦！</p><hr><p>第一个，“<strong>带宽封顶配置</strong>”，配置完如下图所示：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-first.png" alt="set-up-cdn-senior-first"></p><p>第一个的配置比较简单，只需要打开开关即可。打开这个配置的原因是，在某些特殊情况，比如DDoS攻击等，可以抵抗攻击并且减少费用，毕竟，走 CDN 无论流量还是带宽都是算钱的哦！</p><hr><p>第二个，“<strong>HTTPS配置</strong>”，因为我们源站已经开启了https，如果 CDN 没有开启https，那么访问站点时就会提示我们的部分内容不安全，所以我们必须在此配置https。<br>首先，我们前往<a href="https://console.cloud.tencent.com/ssl" target="_blank" rel="noopener">腾讯云SSL证书管理</a>页面申请一个新的证书，打开页面后我们可以看到如下内容：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-second-applyssl-overview.png" alt="set-up-cdn-senior-second-applyssl-overview"></p><p>我们点击上图红框中的“<strong>申请证书</strong>”按钮，并选择下图中左侧的免费证书，点击“<strong>确定</strong>”：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-second-choose-ssltype.png" alt="set-up-cdn-senior-second-choose-ssltype"></p><p>我们进入到下一个页面，其中，<strong>通用名称</strong>需要填写<a href="#添加 CDN 域名">添加 CDN 域名</a>章节中添加的 CDN 域名，然后填写自己的电子邮箱，自定义备注名，其余位置保持默认即可。</p><p><img src="/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-second-applyssl-detail.png" alt="set-up-cdn-senior-second-applyssl-detail"></p><p>填写完成后点击下一步，进入到“<strong>域名身份验证</strong>”页面，由于我使用的域名使用的是腾讯云的云解析服务，使用“<strong>自动DNS验证</strong>”即可，如果你没有使用腾讯云的云解析，请选择合适的验证方式，然后点击“<strong>确认申请</strong>”按钮，稍等片刻即可完成申请。</p><p><img src="/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-second-applyssl-check.png" alt="set-up-cdn-senior-second-applyssl-check"></p><p>然后，我们回到“<strong>高级配置</strong>”标签页，点击下图红框中的“<strong>前往配置</strong>”按钮：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-second-overview.png" alt="set-up-cdn-senior-second-overview"></p><p>我们会进入到如下界面，按照图示中红框中标注的部分，选择前文添加的域名和申请的证书，然后点击“<strong>提交</strong>”即可完成https配置：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-second-detail.png" alt="set-up-cdn-senior-second-detail"></p><p>让我们再次回到“<strong>高级配置</strong>”标签页，找到下图所示的“<strong>HTTP2.0配置</strong>”，并打开“<strong>HTTP2.0</strong>”：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-third.png" alt="set-up-cdn-senior-third"></p><p>最后，同样是在“<strong>高级配置</strong>”标签页，找到下图所示的“<strong>HTTP Header配置</strong>”，点击“<strong>添加HTTP Header</strong>”按钮：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-fourth-overview.png" alt="set-up-cdn-senior-fourth-overview"></p><p>在弹出框中如下图所示填写，然后点击确定即可：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-fourth-detail.png" alt="set-up-cdn-senior-fourth-detail"></p><p>这个配置是因为我们的静态资源中有一些会访问外链，会造成一些跨域问题，必须要进行允许，更专业的解释在这里<a href="https://cloud.tencent.com/document/product/228/6296" target="_blank" rel="noopener">HTTP Header 配置</a>。<br>哇这么大一堆终于配置完了！！！！！٩(๑&gt;◡&lt;๑)۶&gt;)<br>放一张配置完的“<strong>高级配置</strong>”标签页截图：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/set-up-cdn-senior-done.png" alt="set-up-cdn-senior-done"></p><p>呀哈哈！终于腾讯云上的配置结束了，接下来，我们就要在本地对 Hexo 博客进行一定的配置来引用我们部署好的 CDN 服务。</p><hr><h1 id="配置博客使用-CDN"><a href="#配置博客使用-CDN" class="headerlink" title="配置博客使用 CDN"></a>配置博客使用 CDN</h1><p>首先我们需要思考一下，究竟有哪些文件是公共库中有的，而哪些是只能使用我们自有 CDN 的。<br>我以自己为例：</p><ul><li>第一，我原创文章中的图片都是我自己截取编辑的，肯定在这个世界上是独一无二的，公共库和图床中必定没有，所以要在自有 CDN 中引用；</li><li>第二，Next 主题中一些独特的 css、js 文件和一些控件、图标的图片文件，公共库中一般也是没有的，所以也要在自有 CDN 中引用；</li><li>第三，那些如 jQuery、velocity 乃至于我上一篇文章中 Valine 评论功能使用的 Valine.min.js 文件，这些都是非常多的人在用的，在公共库中都是有的，那么我们就可以将这部分引用公共库 CDN 中的静态文件。</li></ul><p>所以这一章节分为两个部分。<br>第一是将我们独一无二的静态资源，即上方第一第二，使用上文中我们部署的 CDN 服务。<br>第二是将一些可以使用公共静态库 CDN 的静态资源，即上方第三，进行链接替换。<br><strong>终于可以看到效果了！你感到激动吗！！！</strong></p><h2 id="配置使用自有-CDN"><a href="#配置使用自有-CDN" class="headerlink" title="配置使用自有 CDN"></a>配置使用自有 CDN</h2><p>事实上，我们使用的 Next 主题已经很好地为我们将以上的问题进行分离，方便使用 CDN 。<br>将 Next 主题中一些独特的 css、js 文件和一些控件、图标的图片文件调用 CDN 非常简单，而自己图片资源需要修改一下我们安装的插件。<br>首先，我们先打开主题的配置文件 <code>_config.yml</code> ，忘记了的同学，老师提醒你，是在根目录下 <code>themes/next/_config.yml</code> 哦！<br>在配置文件中搜索：<code>Assets</code> ，可以看到如下内容：</p><pre><code># Assets
+css: css
+js: js
+images: images
+</code></pre><p>我们需要将其修改为：</p><pre><code># Assets
+css: https://前文中添加的CDN域名/css
+js: https://前文中添加的CDN域名/js
+images: https://前文中添加的CDN域名/images
+</code></pre><p>这样我们已经非常容易地将主题中的资源文件使用了自有 CDN 。<br>然而，在写文章的大家基本应该都是使用了 <code>hexo-asset-image</code> 这个插件来添加图片对吧~<br>如果不是，在博客根目录下打开 <code>Git Bash</code> ，输入 <code>npm install hexo-asset-image --save</code> 即可安装这个插件。<br>要知道，这个插件是为我们生成图片链接的，在文章中我们通过 <code>![图片描述](图片文件名)</code> 这样的方式来添加图片，而每一篇文章都有一个同名文件夹，该文件夹中存储着我们所有的图片，在 <code>hexo g</code> 时生成相应的图片链接。<br>那么，我们就需要修改生成的文件，来使用我们的自有 CDN。<br>首先，找到并打开博客根目录下 <code>node_modules/hexo-asset-image/index.js</code> 这个文件。<br>然后搜索：<code>$(this).attr(&#39;src&#39;, &#39;/&#39; + link + src);</code> 这行内容，我们可以看到以下内容：</p><pre><code>...
+if(linkArray[linkArray.length - 1] == srcArray[0])
+  srcArray.shift();
+    src = srcArray.join(&apos;/&apos;);
+    $(this).attr(&apos;src&apos;, &apos;/&apos; + link + src);
+  }
+});
+data[key] = $.html();
+...
+</code></pre><p>这部分代码就是生成图片链接的部分，我们将其修改为：</p><pre><code>...
+if(linkArray[linkArray.length - 1] == srcArray[0])
+  srcArray.shift();
+    src = srcArray.join(&apos;/&apos;);
+    $(this).attr(&apos;src&apos;, &apos;https://前文中添加的CDN域名/&apos; + link + src);
+  }
+});
+data[key] = $.html();
+...
+</code></pre><p>保存文件，重新生成！哇哦！居然成功了诶！！！</p><h2 id="配置使用公共静态库"><a href="#配置使用公共静态库" class="headerlink" title="配置使用公共静态库"></a>配置使用公共静态库</h2><p>我们使用的 Next 主题已经很好地为我们将以上的问题进行分离，同样方便使用公共静态库。<br>首先，我们先打开主题的配置文件 <code>_config.yml</code> ，在配置文件中搜索：<code>Script Vendors</code>，搜索结果下面一大片全都是可以使用公共静态库的部分，直接在冒号后填写我们要替换的公共静态库链接即可。因为每个人使用的功能都不太一样，这里我就不一条一条填写了，为大家提供几个好用的我自己在用的前端公共静态库。国内篇适合 coding 配置，国外篇适合 Github 配置，特殊篇请看说明。</p><h3 id="国内篇"><a href="#国内篇" class="headerlink" title="国内篇"></a>国内篇</h3><p>国内有很多很多的静态库，我看了不少评测，最终选择的是 BootCDN 这个前端公共库。<br>官方网站地址是<a href="http://www.bootcdn.cn/" target="_blank" rel="noopener">http://www.bootcdn.cn/</a>，只需要在其中进行搜索，基本都是有的！</p><p><img src="/posts/2018/set-up-cdn-for-hexo/bootcdn.png" alt="bootcdn"></p><h3 id="国外篇"><a href="#国外篇" class="headerlink" title="国外篇"></a>国外篇</h3><p>国外的静态库也同样很多，但是很多就没有那么全，在这里我推荐 cdnjs 这个前端公共库。<br>官方网站地址是<a href="https://cdnjs.com/" target="_blank" rel="noopener">https://cdnjs.com/</a>，只需要在其中进行搜索，基本也都是有的！</p><p><img src="/posts/2018/set-up-cdn-for-hexo/cdnjs.png" alt="cdnjs"></p><h3 id="特殊篇"><a href="#特殊篇" class="headerlink" title="特殊篇"></a>特殊篇</h3><p>搜索过的童鞋可能会发现，我们上文中使用到的 Valine 在上面两个库中居然暂时都没有？？？<br>那么我们对 Valine 有一个特别的选择，这个公共库对于国内外访问都蛮快的，如果有什么上面两个没有，也可以到这里搜索一下。<br>这家公共库名字叫 jsDelivr ，官网地址是<a href="https://www.jsdelivr.com/" target="_blank" rel="noopener">https://www.jsdelivr.com/</a>，同样拥有搜索功能，很容易就可以找到啦！</p><p><img src="/posts/2018/set-up-cdn-for-hexo/jsdelivr.jpg" alt="jsdelivr"></p><hr><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>告诉大家一下检查是否生效的方法，只需要在浏览器内右键-检查，选择 Network，然后刷新页面，查看下方静态资源的链接就可以啦！比如这样：</p><p><img src="/posts/2018/set-up-cdn-for-hexo/check-success.png" alt="check-success"></p><p>本文的战斗时间真的非常长…其实我当中跑出去旅游了一段时间hhh<br>我每次在写文章的时候都会重新配置一遍，因为担心自己会写错误导大家…<br>当然…很可能还会漏掉一点什么或者错掉一点什么…欢迎指出！感恩！！！<br>哇呜！居然写了这么长的一篇文章qaq，真的好多图片啊！<br>小伙伴们可以给我分享一下推荐一下给身边要建博客的小伙伴们吗！谢谢大家！！！♪(･ω･)ﾉ</p></div><div><div id="reward-container"><div>坚持原创！欢迎各位客官给我打赏买小饼干吖！✿✿ヽ(°▽°)ノ✿</div> <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';"> 打赏</button><div id="qr" style="display:none"><div style="display:inline-block"> <img src="/images/wechatpay.png" alt="Miaia 微信支付"><p>微信支付</p></div><div style="display:inline-block"> <img src="/images/alipay.png" alt="Miaia 支付宝"><p>支付宝</p></div></div></div></div><div><ul class="post-copyright"><li class="post-copyright-author"> <strong>本文作者：</strong> Miaia</li><li class="post-copyright-link"> <strong>本文链接：</strong> <a href="https://11.tt/posts/2018/set-up-cdn-for-hexo/" title="使用CDN让你的Hexo博客拥有飞一般的体验">https://11.tt/posts/2018/set-up-cdn-for-hexo/</a></li><li class="post-copyright-license"> <strong>版权声明：</strong> 本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div><footer class="post-footer"><div class="post-tags"> <a href="/tags/Hexo/" rel="tag"># Hexo</a> <a href="/tags/cdn/" rel="tag"># cdn</a> <a href="/tags/腾讯云/" rel="tag"># 腾讯云</a> <a href="/tags/cloud/" rel="tag"># cloud</a> <a href="/tags/cos/" rel="tag"># cos</a> <a href="/tags/加速/" rel="tag"># 加速</a> <a href="/tags/访问速度/" rel="tag"># 访问速度</a> <a href="/tags/速度/" rel="tag"># 速度</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/posts/2018/add-valine-to-your-blog/" rel="next" title="使用Valine.js评论系统让游客们到你的Hexo博客留个脚印吧"><i class="fa fa-chevron-left"></i> 使用Valine.js评论系统让游客们到你的Hexo博客留个脚印吧</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/posts/2018/how-to-play-with-hexo/" rel="prev" title="学会写作和你的Hexo博客一起愉快地玩耍吧ヾ(◍°∇°◍)ﾉﾞ">学会写作和你的Hexo博客一起愉快地玩耍吧ヾ(◍°∇°◍)ﾉﾞ<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> 站点概览</li></ul><div class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Miaia"><p class="site-author-name" itemprop="name">Miaia</p><div class="site-description motion-element" itemprop="description">别提概念，只解决问题。</div></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">8</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/"><span class="site-state-item-count">2</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/"><span class="site-state-item-count">33</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/miaia" title="GitHub &rarr; https://github.com/miaia" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i> GitHub</a></span><span class="links-of-author-item"><a href="mailto:1@11.tt" title="E-Mail &rarr; mailto:1@11.tt"><i class="fa fa-fw fa-envelope"></i> E-Mail</a></span></div><div class="cc-license motion-element" itemprop="license"> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a></div></div></div><div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">2.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基于腾讯云部署-CDN"><span class="nav-number">3.</span> <span class="nav-text">基于腾讯云部署 CDN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#对象存储部署"><span class="nav-number">3.1.</span> <span class="nav-text">对象存储部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建存储桶"><span class="nav-number">3.1.1.</span> <span class="nav-text">创建存储桶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传静态资源"><span class="nav-number">3.1.2.</span> <span class="nav-text">上传静态资源</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#存储桶回源配置"><span class="nav-number">3.1.3.</span> <span class="nav-text">存储桶回源配置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CDN-服务部署"><span class="nav-number">3.2.</span> <span class="nav-text">CDN 服务部署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#添加-CDN-域名"><span class="nav-number">3.2.1.</span> <span class="nav-text">添加 CDN 域名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置-CDN-域名"><span class="nav-number">3.2.2.</span> <span class="nav-text">配置 CDN 域名</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#访问控制"><span class="nav-number">3.2.2.1.</span> <span class="nav-text">访问控制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#回源配置"><span class="nav-number">3.2.2.2.</span> <span class="nav-text">回源配置</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#高级配置"><span class="nav-number">3.2.2.3.</span> <span class="nav-text">高级配置</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置博客使用-CDN"><span class="nav-number">4.</span> <span class="nav-text">配置博客使用 CDN</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#配置使用自有-CDN"><span class="nav-number">4.1.</span> <span class="nav-text">配置使用自有 CDN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置使用公共静态库"><span class="nav-number">4.2.</span> <span class="nav-text">配置使用公共静态库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#国内篇"><span class="nav-number">4.2.1.</span> <span class="nav-text">国内篇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#国外篇"><span class="nav-number">4.2.2.</span> <span class="nav-text">国外篇</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#特殊篇"><span class="nav-number">4.2.3.</span> <span class="nav-text">特殊篇</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">5.</span> <span class="nav-text">总结</span></a></li></ol></div></div></div></div></aside><div id="sidebar-dimmer"></div></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span><span class="with-love" id="animate"><i class="fa fa-fas fa-heartbeat"></i></span> <span class="author" itemprop="copyrightHolder">Miaia</span></div><div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.7.1</div> <span class="post-meta-divider">|</span><div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> <span class="site-pv" title="总访问量">栈内已经接待了<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>个元素啦w</span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script>"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script src="//cdn.jsdelivr.net/npm/jquery@2/dist/jquery.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js"></script><script src="/js/utils.js?v=7.1.0"></script><script src="/js/motion.js?v=7.1.0"></script><script src="/js/schemes/muse.js?v=7.1.0"></script><script src="/js/scrollspy.js?v=7.1.0"></script><script src="/js/post-details.js?v=7.1.0"></script><script src="/js/next-boot.js?v=7.1.0"></script><script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST=["nick","mail","link"],guest="nick,mail,link";guest=guest.split(",").filter(function(e){return-1<GUEST.indexOf(e)}),new Valine({el:"#comments",verify:!0,notify:!0,appId:"1737M61wconDeU7FLHRpwTiD-gzGzoHsz",appKey:"7exFFNYzJ6C9nWOlA0axIWu1",placeholder:"ヾﾉ≧∀≦)o来啊，快活啊!",avatar:"mm",meta:guest,pageSize:"10",visitor:!1,lang:"zh-cn"})</script><script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1/bookmark.min.js"></script><script>bookmark.scrollToMark("auto","#更多")</script><script>!function(a,t,c){t.ChatraID="";var h=a.createElement("script");t[c]=t[c]||function(){(t[c].q=t[c].q||[]).push(arguments)},h.async=!0,h.src="https://call.chatra.io/chatra.js",a.head&&a.head.appendChild(h)}(document,window,"Chatra")</script><script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.0.5/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{scale:1,hHeadPos:.5,vHeadPos:.618,jsonPath:"/live2dw/assets/Pio.model.json"},display:{superSample:2,width:150,height:150,position:"left",hOffset:30,vOffset:-20},mobile:{show:!1,scale:.05},react:{opacityDefault:1,opacityOnHover:.2},log:!1})</script></body></html>

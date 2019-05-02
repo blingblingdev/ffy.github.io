@@ -1,0 +1,374 @@
+<!DOCTYPE html><html class="theme-next muse use-motion" lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css"><link rel="stylesheet" href="/css/main.css?v=7.1.0"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.1.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.1.0"><link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222"><script id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",version:"7.1.0",sidebar:{position:"left",display:"post",offset:12,onmobile:!1,dimmer:!0},back2top:!0,back2top_sidebar:!1,fancybox:!1,fastclick:!1,lazyload:!0,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><meta name="description" content="这个神奇的看板生物是我在某一次自由地 surfing the internet 时碰巧发现的，当时看到了之后就瞬间萌化了(〃’▽’〃)当天晚上就马上为自己的博客加上了左下角这只~顺便还配好了CDN~那么现在，就让我们一起学猫叫，一起喵喵喵喵喵！在你面前撒个娇~哎呦喵喵喵喵喵ヽ(^ω^)ﾉ"><meta name="keywords" content="Hexo,live2D,喵星人,猫,看板娘"><meta property="og:type" content="article"><meta property="og:title" content="用Live2D让看板喵入住你的Hexo博客吧\(^o^)&#x2F;~"><meta property="og:url" content="https://11.tt/posts/2018/how-to-play-with-live2d-on-hexo/index.html"><meta property="og:site_name" content="十一種情緒的堆棧"><meta property="og:description" content="这个神奇的看板生物是我在某一次自由地 surfing the internet 时碰巧发现的，当时看到了之后就瞬间萌化了(〃’▽’〃)当天晚上就马上为自己的博客加上了左下角这只~顺便还配好了CDN~那么现在，就让我们一起学猫叫，一起喵喵喵喵喵！在你面前撒个娇~哎呦喵喵喵喵喵ヽ(^ω^)ﾉ"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://11.tt/posts/2018/how-to-play-with-live2d-on-hexo/how-to-play-with-live2d-on-hexo.png"><meta property="og:image" content="https://11.tt/posts/2018/how-to-play-with-live2d-on-hexo/hijiki-rendering.png"><meta property="og:updated_time" content="2019-04-21T06:49:03.203Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="用Live2D让看板喵入住你的Hexo博客吧\(^o^)&#x2F;~"><meta name="twitter:description" content="这个神奇的看板生物是我在某一次自由地 surfing the internet 时碰巧发现的，当时看到了之后就瞬间萌化了(〃’▽’〃)当天晚上就马上为自己的博客加上了左下角这只~顺便还配好了CDN~那么现在，就让我们一起学猫叫，一起喵喵喵喵喵！在你面前撒个娇~哎呦喵喵喵喵喵ヽ(^ω^)ﾉ"><meta name="twitter:image" content="https://11.tt/posts/2018/how-to-play-with-live2d-on-hexo/how-to-play-with-live2d-on-hexo.png"><link rel="alternate" href="/atom.xml" title="十一種情緒的堆棧" type="application/atom+xml"><link rel="canonical" href="https://11.tt/posts/2018/how-to-play-with-live2d-on-hexo/"><script id="page.configurations">CONFIG.page={sidebar:""}</script><title>用Live2D让看板喵入住你的Hexo博客吧\(^o^)/~ | 十一種情緒的堆棧</title><script async src="//www.googletagmanager.com/gtag/js?id=UA-120626710-1"></script><script>var host=window.location.hostname;if("localhost"!==host){function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-120626710-1")}</script><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">十一種情緒的堆棧</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">别提概念，只解决问题。</p></div><div class="site-nav-toggle"> <button aria-label="切换导航栏"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签<span class="badge">33</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档<span class="badge">8</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>关于</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://11.tt/posts/2018/how-to-play-with-live2d-on-hexo/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Miaia"><meta itemprop="description" content="别提概念，只解决问题。"><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="十一種情緒的堆棧"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">用Live2D让看板喵入住你的Hexo博客吧\(^o^)/~</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-09-19 22:22:22" itemprop="dateCreated datePublished" datetime="2018-09-19T22:22:22+08:00">2018-09-19</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a></span></span> <span class="post-comments-count"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span> <span class="post-meta-item-text">评论数：</span><a href="/posts/2018/how-to-play-with-live2d-on-hexo/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/posts/2018/how-to-play-with-live2d-on-hexo/" itemprop="commentCount"></span></a></span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-eye"></i> 阅读次数：<span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body" itemprop="articleBody"><p><img src="/posts/2018/how-to-play-with-live2d-on-hexo/how-to-play-with-live2d-on-hexo.png" alt="how-to-play-with-live2d-on-hexo"></p><p>这个神奇的看板生物是我在某一次自由地 surfing the internet 时碰巧发现的，当时看到了之后就瞬间萌化了(〃’▽’〃)<br>当天晚上就马上为自己的博客加上了左下角这只~顺便还配好了CDN~<br>那么现在，就让我们一起学猫叫，一起喵喵喵喵喵！在你面前撒个娇~哎呦喵喵喵喵喵ヽ(^ω^)ﾉ<br><a id="more"></a></p><hr><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>首先要告诉大家的是，Hexo 配置这只 Live2D 非常简单，需要的时间也不长~<br>然后，本文中配置 Live2D 看板娘所使用的环境如下：</p><pre><code>* Windows 10 1803
+* node-v8.11.2-x64
+* git version 2.17.1.windows.2
+* hexo-v3.7.1
+* NexT.Muse v6.4.1
+* hexo-helper-live2d@3.1.0
+* 看板娘一只
+</code></pre><p>同时给出 hexo-helper-live2d 的 Github 链接：<a href="https://github.com/EYHN/hexo-helper-live2d" target="_blank" rel="noopener">https://github.com/EYHN/hexo-helper-live2d</a><br><strong>另外，本文在电脑上浏览最佳！</strong><br>接下来！让我们开始吧！</p><hr><h1 id="安装并配置-hexo-helper-live2d"><a href="#安装并配置-hexo-helper-live2d" class="headerlink" title="安装并配置 hexo-helper-live2d"></a>安装并配置 hexo-helper-live2d</h1><p>在这一章节完成后，就可以完成对 Live2D 的配置啦！请耐心看完，很快就搞定咯！</p><h2 id="安装-hexo-helper-live2d"><a href="#安装-hexo-helper-live2d" class="headerlink" title="安装 hexo-helper-live2d"></a>安装 hexo-helper-live2d</h2><p>首先，在博客的根目录下执行下方命令，并可以得到类似下方的输出：</p><pre><code>$ npm install hexo-helper-live2d --save
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.4: wanted {&quot;os&quot;:&quot;darwin&quot;,&quot;arch&quot;:&quot;any&quot;} (current: {&quot;os&quot;:&quot;win32&quot;,&quot;arch&quot;:&quot;x64&quot;})
+
++ hexo-helper-live2d@3.1.0
+added 6 packages from 6 contributors and audited 5818 packages in 22.674s
+found 0 vulnerabilities
+</code></pre><p>非常简单，看到类似上方的输出之后，代表这个插件已经安装完成啦！</p><h2 id="配置-hexo-helper-live2d"><a href="#配置-hexo-helper-live2d" class="headerlink" title="配置 hexo-helper-live2d"></a>配置 hexo-helper-live2d</h2><p>这部分是这篇文章的重点部分，完成这部分之后即可在自己的博客上看到你家的萌物啦！<br>在开始配置之前，你需要先获取 Live2D 的资源，很多手游中都有 Live2D 资源可以获取的哦！具体获取方式此处不表，有需要的同学可以 Google 一哈٩(๑&gt;₃&lt;)۶<br>当然啦！为了让大家能够快速配置好看板喵，自然是有其它方式的~<br>你可以在 <a href="https://huaji8.top/post/live2d-plugin-2.0/" target="_blank" rel="noopener">插件作者的博客</a> 里挑选一只你喜欢的萌物，然后记录下它的名字~<br>然后我们开始配置吧(￣▽￣)／</p><h3 id="安装你看中的萌物"><a href="#安装你看中的萌物" class="headerlink" title="安装你看中的萌物"></a>安装你看中的萌物</h3><p>上方页面中提供的 Live2D 资源已经都被作者发布成 npm 包啦！<br>我们只需要简单滴安装 <code>live2d-widget-model-你选中的萌物名字</code> 即可获得对应的 Live2D 资源，我们这里以 hijiki 这只黑喵为例~<br>使用以下命令安装 <code>live2d-widget-model-hijiki</code>：</p><pre><code>$ npm install live2d-widget-model-hijiki --save
+npm WARN optional SKIPPING OPTIONAL DEPENDENCY: fsevents@1.2.4 (node_modules\fsevents):
+npm WARN notsup SKIPPING OPTIONAL DEPENDENCY: Unsupported platform for fsevents@1.2.4: wanted {&quot;os&quot;:&quot;darwin&quot;,&quot;arch&quot;:&quot;any&quot;} (current: {&quot;os&quot;:&quot;win32&quot;,&quot;arch&quot;:&quot;x64&quot;})
+
++ live2d-widget-model-hijiki@1.0.5
+added 1 package and audited 5819 packages in 9.782s
+found 0 vulnerabilities
+</code></pre><p>如果你输入的命令得到了类似上方的输出，那么，hijiki 已经在等着你了哦！</p><h3 id="配置你看中的萌物"><a href="#配置你看中的萌物" class="headerlink" title="配置你看中的萌物"></a>配置你看中的萌物</h3><p>在<a href="https://github.com/EYHN/hexo-helper-live2d" target="_blank" rel="noopener">官方文档</a>中可以很容易获取配置文件的样例，下方提供的配置可以让大家直接使用 hijiki (〃’▽’〃)<br>首先，请大家打开博客根目录下的配置文件 <code>_config.yml</code>，在配置文件的最后添加以下内容：</p><pre><code># Live2D
+## https://github.com/EYHN/hexo-helper-live2d
+live2d:
+enable: true
+scriptFrom: jsdelivr # 默认
+pluginRootPath: live2dw/ # 插件在站点上的根目录(相对路径)
+pluginJsPath: lib/ # 脚本文件相对与插件根目录路径
+pluginModelPath: assets/ # 模型文件相对与插件根目录路径
+# scriptFrom: jsdelivr # jsdelivr CDN
+# scriptFrom: unpkg # unpkg CDN
+# scriptFrom: https://cdn.jsdelivr.net/npm/live2d-widget@3.x/lib/L2Dwidget.min.js # 你的自定义 url
+tagMode: false # 标签模式, 是否仅替换 live2d tag标签而非插入到所有页面中
+debug: false # 调试, 是否在控制台输出日志
+model:
+    use: live2d-widget-model-hijiki # npm-module package name
+    # use: hijiki # 博客根目录/live2d_models/ 下的目录名
+    # use: ./wives/hijiki # 相对于博客根目录的路径
+    # use: https://cdn.jsdelivr.net/npm/live2d-widget-model-hijiki@1.0.5/assets/hijiki.model.json # 你的自定义 url
+    scale: 1
+    hHeadPos: 0.5
+    vHeadPos: 0.618
+display:
+    superSample: 2
+    width: 125
+    height: 125
+    position: left
+    hOffset: 30
+    vOffset: -20
+mobile:
+    show: false
+    scale: 0.05
+react:
+    opacityDefault: 1
+    opacityOnHover: 0.2
+</code></pre><p>然后执行命令 <code>hexo clean &amp;&amp; hexo g &amp;&amp; hexo s</code>，即可在本地4000端口看到这只萌物啦！效果图如下：</p><p><img src="/posts/2018/how-to-play-with-live2d-on-hexo/hijiki-rendering.png" alt="hijiki-rendering.png"></p><p>是不是超级简单！！！</p><h3 id="配置详解"><a href="#配置详解" class="headerlink" title="配置详解"></a>配置详解</h3><p>为了让大家能够更加自由地自定义自己看板喵的位置、大小、属性等内容，我在下方表格中列出了上方配置中所有项目的解释，并不是用到了所有配置。<br><strong>请注意！！！</strong>这里使用的 hexo-helper-live2d 版本是 3.1.0，如果你使用的不是这个版本，下方内容可能已经过期。<br>这里给出作者的 API 文档，此文档应该是作者根据版本更新的：<a href="https://l2dwidget.js.org/docs/class/src/index.js~L2Dwidget.html" target="_blank" rel="noopener">live2d-widget.js API</a></p><table><thead><tr><th>配置项</th><th>类型</th><th>属性</th><th>备注</th></tr></thead><tbody><tr><td>enable</td><td>Boolean</td><td><code>true</code>或者<code>false</code></td><td>控制live2d插件是否生效。</td></tr><tr><td>scriptFrom</td><td>String</td><td><code>local</code>或者<code>jsdelivr</code>或者<code>unpkg</code></td><td>l2dwidget.js使用的CDN地址，local表示使用本地地址。</td></tr><tr><td>pluginRootPath</td><td>String</td><td>例如：<code>live2dw/</code></td><td>插件在站点上根目录的相对路径。</td></tr><tr><td>pluginJsPath</td><td>String</td><td>例如：<code>lib/</code></td><td>脚本文件相对与插件根目录路径。</td></tr><tr><td>pluginModelPath</td><td>String</td><td>例如：<code>assets/</code></td><td>模型文件相对与插件根目录路径。</td></tr><tr><td>tagMode</td><td>Boolean</td><td><code>true</code>或者<code>false</code></td><td>标签模式, 控制是否仅替换tag标签而非插入到所有页面中。</td></tr><tr><td>debug</td><td>Boolean</td><td><code>true</code>或者<code>false</code></td><td>调试模式, 控制是否在控制台输出日志。</td></tr><tr><td>model.use</td><td>String</td><td>例如：<code>live2d-widget-model-hijiki</code></td><td>npm 模块包名（上文例中即使用的这个方式）。</td></tr><tr><td>model.use</td><td>String</td><td>例如：<code>hijiki</code></td><td>博客根目录/live2d_models/ 下的目录名。</td></tr><tr><td>model.use</td><td>String</td><td>例如：<code>./wives/hijiki</code></td><td>相对于博客根目录的路径。</td></tr><tr><td>model.use</td><td>String</td><td>例如：<code>https://域名/model.json</code></td><td>你自定义live2d模型json文件的url。</td></tr><tr><td>model.scale</td><td>Number</td><td>可选值，默认值为 <code>1</code></td><td>模型与canvas的缩放。</td></tr><tr><td>model.hHeadPos</td><td>Number</td><td>可选值，默认值为 <code>0.5</code></td><td>模型头部横坐标。</td></tr><tr><td>model.vHeadPos</td><td>Number</td><td>可选值，默认值为 <code>0.618</code></td><td>模型头部横坐标。</td></tr><tr><td>display.superSample</td><td>Number</td><td>可选值，默认值为 <code>2</code></td><td>超采样等级。</td></tr><tr><td>display.width</td><td>Number</td><td>可选值，默认值为 <code>150</code></td><td>canvas的长度。</td></tr><tr><td>display.height</td><td>String</td><td>可选值，默认值为 <code>300</code></td><td>canvas的高度。</td></tr><tr><td>display.position</td><td>Number</td><td>可选值，默认值为 <code>right</code></td><td>显示位置：左或右。</td></tr><tr><td>display.hOffset</td><td>Number</td><td>可选值，默认值为 <code>0</code></td><td>canvas水平偏移。</td></tr><tr><td>display.vOffset</td><td>Number</td><td>可选值，默认值为 <code>-20</code></td><td>canvas水平偏移。</td></tr><tr><td>mobile.show</td><td>Boolean</td><td>可选值，默认值为 <code>true</code></td><td>控制是否在移动设备上显示。</td></tr><tr><td>mobile.scale</td><td>Number</td><td>可选值，默认值为 <code>0.5</code></td><td>移动设备上的缩放。</td></tr><tr><td>react.opacityDefault</td><td>Number</td><td>可选值，默认值为 <code>0.7</code></td><td>默认透明度。</td></tr><tr><td>react.opacityOnHover</td><td>Number</td><td>可选值，默认值为 <code>0.2</code></td><td>鼠标移上透明度（此项貌似没有效果）。</td></tr></tbody></table><hr><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>好啦！今天的配置就到这里，大家有没有都把自己的看板喵领回家呀！٩(๑&gt;◡&lt;๑)۶<br>这种新奇的小玩意儿以后可能还是会有的，但是为了保证自己一如既往喜欢的简约，可能以后就不会有更多花哨的东西出现了。<br>好啦希望大家喜欢<em>(:з」∠)</em><br>另外，顺便告诉大家，我左下角这只的模型解包来自 <strong>药水制作师</strong> 手机游戏，版权归该官方所有。</p></div><div><div id="reward-container"><div>坚持原创！欢迎各位客官给我打赏买小饼干吖！✿✿ヽ(°▽°)ノ✿</div> <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';"> 打赏</button><div id="qr" style="display:none"><div style="display:inline-block"> <img src="/images/wechatpay.png" alt="Miaia 微信支付"><p>微信支付</p></div><div style="display:inline-block"> <img src="/images/alipay.png" alt="Miaia 支付宝"><p>支付宝</p></div></div></div></div><div><ul class="post-copyright"><li class="post-copyright-author"> <strong>本文作者：</strong> Miaia</li><li class="post-copyright-link"> <strong>本文链接：</strong> <a href="https://11.tt/posts/2018/how-to-play-with-live2d-on-hexo/" title="用Live2D让看板喵入住你的Hexo博客吧\(^o^)/~">https://11.tt/posts/2018/how-to-play-with-live2d-on-hexo/</a></li><li class="post-copyright-license"> <strong>版权声明：</strong> 本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div><footer class="post-footer"><div class="post-tags"> <a href="/tags/Hexo/" rel="tag"># Hexo</a> <a href="/tags/live2D/" rel="tag"># live2D</a> <a href="/tags/喵星人/" rel="tag"># 喵星人</a> <a href="/tags/猫/" rel="tag"># 猫</a> <a href="/tags/看板娘/" rel="tag"># 看板娘</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/posts/2018/how-to-play-with-hexo/" rel="next" title="学会写作和你的Hexo博客一起愉快地玩耍吧ヾ(◍°∇°◍)ﾉﾞ"><i class="fa fa-chevron-left"></i> 学会写作和你的Hexo博客一起愉快地玩耍吧ヾ(◍°∇°◍)ﾉﾞ</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/posts/2018/how-to-update-hexo-theme-next/" rel="prev" title="教你顺滑升级6.x版本的NexT主题">教你顺滑升级6.x版本的NexT主题<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> 站点概览</li></ul><div class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Miaia"><p class="site-author-name" itemprop="name">Miaia</p><div class="site-description motion-element" itemprop="description">别提概念，只解决问题。</div></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">8</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/"><span class="site-state-item-count">2</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/"><span class="site-state-item-count">33</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/miaia" title="GitHub &rarr; https://github.com/miaia" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i> GitHub</a></span><span class="links-of-author-item"><a href="mailto:1@11.tt" title="E-Mail &rarr; mailto:1@11.tt"><i class="fa fa-fw fa-envelope"></i> E-Mail</a></span></div><div class="cc-license motion-element" itemprop="license"> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a></div></div></div><div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装并配置-hexo-helper-live2d"><span class="nav-number">2.</span> <span class="nav-text">安装并配置 hexo-helper-live2d</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装-hexo-helper-live2d"><span class="nav-number">2.1.</span> <span class="nav-text">安装 hexo-helper-live2d</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#配置-hexo-helper-live2d"><span class="nav-number">2.2.</span> <span class="nav-text">配置 hexo-helper-live2d</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装你看中的萌物"><span class="nav-number">2.2.1.</span> <span class="nav-text">安装你看中的萌物</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置你看中的萌物"><span class="nav-number">2.2.2.</span> <span class="nav-text">配置你看中的萌物</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置详解"><span class="nav-number">2.2.3.</span> <span class="nav-text">配置详解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li></ol></div></div></div></div></aside><div id="sidebar-dimmer"></div></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span><span class="with-love" id="animate"><i class="fa fa-fas fa-heartbeat"></i></span> <span class="author" itemprop="copyrightHolder">Miaia</span></div><div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.7.1</div> <span class="post-meta-divider">|</span><div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> <span class="site-pv" title="总访问量">栈内已经接待了<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>个元素啦w</span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script>"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script src="//cdn.jsdelivr.net/npm/jquery@2/dist/jquery.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js"></script><script src="/js/utils.js?v=7.1.0"></script><script src="/js/motion.js?v=7.1.0"></script><script src="/js/schemes/muse.js?v=7.1.0"></script><script src="/js/scrollspy.js?v=7.1.0"></script><script src="/js/post-details.js?v=7.1.0"></script><script src="/js/next-boot.js?v=7.1.0"></script><script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST=["nick","mail","link"],guest="nick,mail,link";guest=guest.split(",").filter(function(e){return-1<GUEST.indexOf(e)}),new Valine({el:"#comments",verify:!0,notify:!0,appId:"1737M61wconDeU7FLHRpwTiD-gzGzoHsz",appKey:"7exFFNYzJ6C9nWOlA0axIWu1",placeholder:"ヾﾉ≧∀≦)o来啊，快活啊!",avatar:"mm",meta:guest,pageSize:"10",visitor:!1,lang:"zh-cn"})</script><script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1/bookmark.min.js"></script><script>bookmark.scrollToMark("auto","#更多")</script><script>!function(a,t,c){t.ChatraID="";var h=a.createElement("script");t[c]=t[c]||function(){(t[c].q=t[c].q||[]).push(arguments)},h.async=!0,h.src="https://call.chatra.io/chatra.js",a.head&&a.head.appendChild(h)}(document,window,"Chatra")</script><script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.0.5/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{scale:1,hHeadPos:.5,vHeadPos:.618,jsonPath:"/live2dw/assets/Pio.model.json"},display:{superSample:2,width:150,height:150,position:"left",hOffset:30,vOffset:-20},mobile:{show:!1,scale:.05},react:{opacityDefault:1,opacityOnHover:.2},log:!1})</script></body></html>

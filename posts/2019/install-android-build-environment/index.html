@@ -1,0 +1,322 @@
+<!DOCTYPE html><html class="theme-next muse use-motion" lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css"><link rel="stylesheet" href="/css/main.css?v=7.1.0"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.1.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.1.0"><link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222"><script id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",version:"7.1.0",sidebar:{position:"left",display:"post",offset:12,onmobile:!1,dimmer:!0},back2top:!0,back2top_sidebar:!1,fancybox:!1,fastclick:!1,lazyload:!0,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><meta name="description" content="这个故事是这样开始的，在一个阳光明媚的下午，我被叫到了昏暗的会议室持续交付系统对接安卓和IOS发布的需求，为了尽量适应所有平台的编译，于是我就又一次开始了各种环境的部署之旅。遇事不决问谷歌，实在不行上Stack Overflow。可是官网已经没有搜索到的很多教程里提供的sdk地址，反而要求我下载Android Studio。我一台编译机装什么图形界面啊喂！于是就是开始了sdkmanager的踩坑"><meta name="keywords" content="Android,build,devops,sdk,java"><meta property="og:type" content="article"><meta property="og:title" content="使用sdkmanager一键安装安卓编译环境"><meta property="og:url" content="https://11.tt/posts/2019/install-android-build-environment/index.html"><meta property="og:site_name" content="十一種情緒的堆棧"><meta property="og:description" content="这个故事是这样开始的，在一个阳光明媚的下午，我被叫到了昏暗的会议室持续交付系统对接安卓和IOS发布的需求，为了尽量适应所有平台的编译，于是我就又一次开始了各种环境的部署之旅。遇事不决问谷歌，实在不行上Stack Overflow。可是官网已经没有搜索到的很多教程里提供的sdk地址，反而要求我下载Android Studio。我一台编译机装什么图形界面啊喂！于是就是开始了sdkmanager的踩坑"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://11.tt/posts/2019/install-android-build-environment/install-android-build-environment.png"><meta property="og:updated_time" content="2019-04-21T06:49:22.914Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="使用sdkmanager一键安装安卓编译环境"><meta name="twitter:description" content="这个故事是这样开始的，在一个阳光明媚的下午，我被叫到了昏暗的会议室持续交付系统对接安卓和IOS发布的需求，为了尽量适应所有平台的编译，于是我就又一次开始了各种环境的部署之旅。遇事不决问谷歌，实在不行上Stack Overflow。可是官网已经没有搜索到的很多教程里提供的sdk地址，反而要求我下载Android Studio。我一台编译机装什么图形界面啊喂！于是就是开始了sdkmanager的踩坑"><meta name="twitter:image" content="https://11.tt/posts/2019/install-android-build-environment/install-android-build-environment.png"><link rel="alternate" href="/atom.xml" title="十一種情緒的堆棧" type="application/atom+xml"><link rel="canonical" href="https://11.tt/posts/2019/install-android-build-environment/"><script id="page.configurations">CONFIG.page={sidebar:""}</script><title>使用sdkmanager一键安装安卓编译环境 | 十一種情緒的堆棧</title><script async src="//www.googletagmanager.com/gtag/js?id=UA-120626710-1"></script><script>var host=window.location.hostname;if("localhost"!==host){function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-120626710-1")}</script><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">十一種情緒的堆棧</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">别提概念，只解决问题。</p></div><div class="site-nav-toggle"> <button aria-label="切换导航栏"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签<span class="badge">33</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档<span class="badge">8</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>关于</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://11.tt/posts/2019/install-android-build-environment/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Miaia"><meta itemprop="description" content="别提概念，只解决问题。"><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="十一種情緒的堆棧"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">使用sdkmanager一键安装安卓编译环境</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建时间：2019-04-11 15:00:00" itemprop="dateCreated datePublished" datetime="2019-04-11T15:00:00+08:00">2019-04-11</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Android/" itemprop="url" rel="index"><span itemprop="name">Android</span></a></span></span> <span class="post-comments-count"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span> <span class="post-meta-item-text">评论数：</span><a href="/posts/2019/install-android-build-environment/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/posts/2019/install-android-build-environment/" itemprop="commentCount"></span></a></span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-eye"></i> 阅读次数：<span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body" itemprop="articleBody"><p><img src="/posts/2019/install-android-build-environment/install-android-build-environment.png" alt="install-android-build-environment"></p><p>这个故事是这样开始的，在一个阳光明媚的下午，我被叫到了昏暗的会议室持续交付系统对接安卓和IOS发布的需求，为了尽量适应所有平台的编译，于是我就又一次开始了各种环境的部署之旅。<br>遇事不决问谷歌，实在不行上Stack Overflow。可是官网已经没有搜索到的很多教程里提供的sdk地址，反而要求我下载Android Studio。我一台编译机装什么图形界面啊喂！于是就是开始了sdkmanager的踩坑之旅。<br><a id="more"></a><br>我写脚本的水平还是比较菜的，所以为了不丢人现眼，自己写的一键安装脚本放在了文末，CentOS7测试通过，需要的可以直接拉到底部。</p><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>本文共分为三个主要部分，分别为安装仍然免费的JDK、安装sdkmanager以及sdk、ndk的安装。<br>文中使用的环境为：</p><pre><code>* CentOS Linux release 7.5.1804 (Core)
+* jdk-8u191-linux-x64
+* sdk-tools-linux-4333796
+</code></pre><p>然后一如既往，提供官方网站的地址：<br>JDK 8 官方网站：<a href="https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html" target="_blank" rel="noopener">Java SE Development Kit 8 Downloads</a><br>安卓开发者官方网站：<a href="https://developer.android.com/studio" target="_blank" rel="noopener">Android Studio</a></p><h1 id="安装JDK"><a href="#安装JDK" class="headerlink" title="安装JDK"></a>安装JDK</h1><p>我们都知道，Oracle爸爸现在开始到处发“威胁邮件”收取使用费了，于是我们需要使用一个Oracle爸爸说还能免费使用的版本，据公司领导们决策，我们使用Java 8最后一个免费版本，即jdk-8u191。然而抠门的Oracle爸爸已经让我们拼了老命还要注册账号才能下载到这个版本，于是我花了几个小时刷了一遍他的下载路径，找到了直接可以下载的方法，本文中暂时不表，下次单独说。<br>事实上，安装jdk非常简单，仅需执行以下命令即可：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">echo "install jdk 8u191"</span><br><span class="line">wget -O /tmp/jdk-8u191-linux-x64.tar.gz http://javadl.oracle.com/webapps/download/AutoDL?BundleId=235704_2787e4a523244c269598db4e85c51e0c</span><br><span class="line">tar -xvf /tmp/jdk-8u191-linux-x64.tar.gz -C /vdb/</span><br><span class="line">echo 'export JAVA_HOME=/vdb/jdk1.8.0_191' &gt;&gt; /etc/profile</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure><p>嗯，你们没猜错，最后的脚本就是把这些一段段拼起来。</p><h1 id="安装sdkmanager"><a href="#安装sdkmanager" class="headerlink" title="安装sdkmanager"></a>安装sdkmanager</h1><p>接下来就是安装这个很坑的东西了，一开始sdkmanager是安装sdk时附带的一个工具，但是后来我直接安装sdk就变成了 <code>deprecated</code>。行吧，那我就装上sdkmanager先：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo "install sdkmanager"</span><br><span class="line">wget -O /tmp/sdk-tools-linux-4333796.zip https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip</span><br><span class="line">mkdir -p /vdb/android-sdk-linux</span><br><span class="line">unzip /tmp/sdk-tools-linux-4333796.zip -d /vdb/android-sdk-linux/</span><br><span class="line">echo 'export ANDROID_HOME=/vdb/android-sdk-linux' &gt;&gt; /etc/profile</span><br><span class="line">echo 'export PATH=$JAVA_HOME/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$PATH'  &gt;&gt; /etc/profile</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure><p>然后使用方法也很简单：</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sdkmanager "&#123;需要安装包的名字;版本&#125;"</span><br></pre></td></tr></table></figure><h1 id="安装安卓sdk和ndk"><a href="#安装安卓sdk和ndk" class="headerlink" title="安装安卓sdk和ndk"></a>安装安卓sdk和ndk</h1><p>很神奇的是，sdkmanager不能安装ndk，emmmm，可能因为不叫 <code>sndkmanager</code> ？？？</p><h2 id="安装sdk"><a href="#安装sdk" class="headerlink" title="安装sdk"></a>安装sdk</h2><p>因为发布可能会涉及到各种版本，所以我是要安装所有的sdk以及相关其他依赖包，于是我安装时就写成了这样…</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre></td><td class="code"><pre><span class="line">echo "install sdk"</span><br><span class="line">echo "you must manually input yes when you see license"</span><br><span class="line">read -p "--- Press any key to continue ---"</span><br><span class="line">sdkmanager \</span><br><span class="line">"add-ons;addon-google_apis-google-15" \</span><br><span class="line">"add-ons;addon-google_apis-google-16" \</span><br><span class="line">"add-ons;addon-google_apis-google-17" \</span><br><span class="line">"add-ons;addon-google_apis-google-18" \</span><br><span class="line">"add-ons;addon-google_apis-google-19" \</span><br><span class="line">"add-ons;addon-google_apis-google-21" \</span><br><span class="line">"add-ons;addon-google_apis-google-22" \</span><br><span class="line">"add-ons;addon-google_apis-google-23" \</span><br><span class="line">"add-ons;addon-google_apis-google-24" \</span><br><span class="line">"add-ons;addon-google_gdk-google-19" \</span><br><span class="line">"build-tools;19.1.0" \</span><br><span class="line">"build-tools;20.0.0" \</span><br><span class="line">"build-tools;21.1.2" \</span><br><span class="line">"build-tools;22.0.1" \</span><br><span class="line">"build-tools;23.0.1" \</span><br><span class="line">"build-tools;23.0.2" \</span><br><span class="line">"build-tools;23.0.3" \</span><br><span class="line">"build-tools;24.0.0" \</span><br><span class="line">"build-tools;24.0.1" \</span><br><span class="line">"build-tools;24.0.2" \</span><br><span class="line">"build-tools;24.0.3" \</span><br><span class="line">"build-tools;25.0.0" \</span><br><span class="line">"build-tools;25.0.1" \</span><br><span class="line">"build-tools;25.0.2" \</span><br><span class="line">"build-tools;25.0.3" \</span><br><span class="line">"build-tools;26.0.0" \</span><br><span class="line">"build-tools;26.0.1" \</span><br><span class="line">"build-tools;26.0.2" \</span><br><span class="line">"build-tools;26.0.3" \</span><br><span class="line">"build-tools;27.0.0" \</span><br><span class="line">"build-tools;27.0.1" \</span><br><span class="line">"build-tools;27.0.2" \</span><br><span class="line">"build-tools;27.0.3" \</span><br><span class="line">"build-tools;28.0.0" \</span><br><span class="line">"build-tools;28.0.0-rc1" \</span><br><span class="line">"build-tools;28.0.0-rc2" \</span><br><span class="line">"build-tools;28.0.1" \</span><br><span class="line">"build-tools;28.0.2" \</span><br><span class="line">"build-tools;28.0.3" \</span><br><span class="line">"build-tools;29.0.0-rc1" \</span><br><span class="line">"cmake;3.10.2.4988404" \</span><br><span class="line">"cmake;3.6.4111459" \</span><br><span class="line">"extras;android;gapid;1" \</span><br><span class="line">"extras;android;gapid;3" \</span><br><span class="line">"extras;android;m2repository" \</span><br><span class="line">"extras;google;auto" \</span><br><span class="line">"extras;google;google_play_services" \</span><br><span class="line">"extras;google;instantapps" \</span><br><span class="line">"extras;google;m2repository" \</span><br><span class="line">"extras;google;market_apk_expansion" \</span><br><span class="line">"extras;google;market_licensing" \</span><br><span class="line">"extras;google;simulators" \</span><br><span class="line">"extras;google;webdriver" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha2" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha3" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha4" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha5" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha6" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha7" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha8" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha9" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-beta1" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-beta2" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-beta3" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-beta4" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-beta5" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.1" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha2" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha3" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha4" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha5" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha6" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha7" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha8" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha9" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta1" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta2" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta3" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta4" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta5" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.1" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" \</span><br><span class="line">"lldb;2.0" \</span><br><span class="line">"lldb;2.1" \</span><br><span class="line">"lldb;2.2" \</span><br><span class="line">"lldb;2.3" \</span><br><span class="line">"lldb;3.0" \</span><br><span class="line">"lldb;3.1" \</span><br><span class="line">"ndk-bundle" \</span><br><span class="line">"patcher;v4" \</span><br><span class="line">"platform-tools" \</span><br><span class="line">"platforms;android-10" \</span><br><span class="line">"platforms;android-11" \</span><br><span class="line">"platforms;android-12" \</span><br><span class="line">"platforms;android-13" \</span><br><span class="line">"platforms;android-14" \</span><br><span class="line">"platforms;android-15" \</span><br><span class="line">"platforms;android-16" \</span><br><span class="line">"platforms;android-17" \</span><br><span class="line">"platforms;android-18" \</span><br><span class="line">"platforms;android-19" \</span><br><span class="line">"platforms;android-20" \</span><br><span class="line">"platforms;android-21" \</span><br><span class="line">"platforms;android-22" \</span><br><span class="line">"platforms;android-23" \</span><br><span class="line">"platforms;android-24" \</span><br><span class="line">"platforms;android-25" \</span><br><span class="line">"platforms;android-26" \</span><br><span class="line">"platforms;android-27" \</span><br><span class="line">"platforms;android-28" \</span><br><span class="line">"platforms;android-7" \</span><br><span class="line">"platforms;android-8" \</span><br><span class="line">"platforms;android-9" \</span><br><span class="line">"platforms;android-Q" \</span><br><span class="line">"tools"</span><br></pre></td></tr></table></figure><p>请注意，这部分的安装需要手动确认License，大家可不要不小心错过了，否则会无法安装哦！</p><h2 id="安装ndk"><a href="#安装ndk" class="headerlink" title="安装ndk"></a>安装ndk</h2><p>首先提供ndk的地址：<br><a href="https://developer.android.com/ndk" target="_blank" rel="noopener">ndk官方网站</a></p><p>我们可以在上面看到的很多的版本，请根据需要选择，我们需要的是ndk13，下文中也是下载安装的13哦！<br><strong>另外，请注意，貌似环境变量中同时只能设置一个ndk版本，所以请自行做好版本管理！</strong></p><p>我们使用以下命令下载并安装ndk-r13b:</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">echo "install ndk"</span><br><span class="line">wget -O /tmp/android-ndk-r13b-linux-x86_64.zip https://dl.google.com/android/repository/android-ndk-r13b-linux-x86_64.zip</span><br><span class="line">mkdir -p /vdb/android-ndk-linux</span><br><span class="line">unzip /tmp/android-ndk-r13b-linux-x86_64.zip -d /vdb/android-ndk-linux/</span><br><span class="line">echo 'export ANDROID_NDK_HOME=/usr/local/android-ndk-linux/android-ndk-r13b' &gt;&gt; /etc/profile</span><br><span class="line">echo 'export PATH=$ANDROID_NDK_HOME:$PATH'  &gt;&gt; /etc/profile</span><br><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure><h1 id="完整shell文件"><a href="#完整shell文件" class="headerlink" title="完整shell文件"></a>完整shell文件</h1><p>主要的安装命令在上文中基本都写了，完整版的shell文件中添加了清理安装包的命令，不需要可以自行删除。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span><span class="bash">!/usr/bin/env bash</span></span><br><span class="line"></span><br><span class="line">echo "init android build environment"</span><br><span class="line"></span><br><span class="line">yum update -y</span><br><span class="line">yum install -y wget unzip</span><br><span class="line"></span><br><span class="line">echo "install jdk 8u191"</span><br><span class="line">wget -O /tmp/jdk-8u191-linux-x64.tar.gz http://javadl.oracle.com/webapps/download/AutoDL?BundleId=235704_2787e4a523244c269598db4e85c51e0c</span><br><span class="line">tar -xvf /tmp/jdk-8u191-linux-x64.tar.gz -C /vdb/</span><br><span class="line">echo 'export JAVA_HOME=/vdb/jdk1.8.0_191' &gt;&gt; /etc/profile</span><br><span class="line"></span><br><span class="line">echo "install sdkmanager"</span><br><span class="line">wget -O /tmp/sdk-tools-linux-4333796.zip https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip</span><br><span class="line">mkdir -p /vdb/android-sdk-linux</span><br><span class="line">unzip /tmp/sdk-tools-linux-4333796.zip -d /vdb/android-sdk-linux/</span><br><span class="line">echo 'export ANDROID_HOME=/vdb/android-sdk-linux' &gt;&gt; /etc/profile</span><br><span class="line">echo 'export PATH=$JAVA_HOME/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$PATH'  &gt;&gt; /etc/profile</span><br><span class="line">source /etc/profile</span><br><span class="line"></span><br><span class="line">echo "install sdk"</span><br><span class="line">echo "you must manually input yes when you see license"</span><br><span class="line">read -p "--- Press any key to continue ---"</span><br><span class="line">sdkmanager \</span><br><span class="line">"add-ons;addon-google_apis-google-15" \</span><br><span class="line">"add-ons;addon-google_apis-google-16" \</span><br><span class="line">"add-ons;addon-google_apis-google-17" \</span><br><span class="line">"add-ons;addon-google_apis-google-18" \</span><br><span class="line">"add-ons;addon-google_apis-google-19" \</span><br><span class="line">"add-ons;addon-google_apis-google-21" \</span><br><span class="line">"add-ons;addon-google_apis-google-22" \</span><br><span class="line">"add-ons;addon-google_apis-google-23" \</span><br><span class="line">"add-ons;addon-google_apis-google-24" \</span><br><span class="line">"add-ons;addon-google_gdk-google-19" \</span><br><span class="line">"build-tools;19.1.0" \</span><br><span class="line">"build-tools;20.0.0" \</span><br><span class="line">"build-tools;21.1.2" \</span><br><span class="line">"build-tools;22.0.1" \</span><br><span class="line">"build-tools;23.0.1" \</span><br><span class="line">"build-tools;23.0.2" \</span><br><span class="line">"build-tools;23.0.3" \</span><br><span class="line">"build-tools;24.0.0" \</span><br><span class="line">"build-tools;24.0.1" \</span><br><span class="line">"build-tools;24.0.2" \</span><br><span class="line">"build-tools;24.0.3" \</span><br><span class="line">"build-tools;25.0.0" \</span><br><span class="line">"build-tools;25.0.1" \</span><br><span class="line">"build-tools;25.0.2" \</span><br><span class="line">"build-tools;25.0.3" \</span><br><span class="line">"build-tools;26.0.0" \</span><br><span class="line">"build-tools;26.0.1" \</span><br><span class="line">"build-tools;26.0.2" \</span><br><span class="line">"build-tools;26.0.3" \</span><br><span class="line">"build-tools;27.0.0" \</span><br><span class="line">"build-tools;27.0.1" \</span><br><span class="line">"build-tools;27.0.2" \</span><br><span class="line">"build-tools;27.0.3" \</span><br><span class="line">"build-tools;28.0.0" \</span><br><span class="line">"build-tools;28.0.0-rc1" \</span><br><span class="line">"build-tools;28.0.0-rc2" \</span><br><span class="line">"build-tools;28.0.1" \</span><br><span class="line">"build-tools;28.0.2" \</span><br><span class="line">"build-tools;28.0.3" \</span><br><span class="line">"build-tools;29.0.0-rc1" \</span><br><span class="line">"cmake;3.10.2.4988404" \</span><br><span class="line">"cmake;3.6.4111459" \</span><br><span class="line">"extras;android;gapid;1" \</span><br><span class="line">"extras;android;gapid;3" \</span><br><span class="line">"extras;android;m2repository" \</span><br><span class="line">"extras;google;auto" \</span><br><span class="line">"extras;google;google_play_services" \</span><br><span class="line">"extras;google;instantapps" \</span><br><span class="line">"extras;google;m2repository" \</span><br><span class="line">"extras;google;market_apk_expansion" \</span><br><span class="line">"extras;google;market_licensing" \</span><br><span class="line">"extras;google;simulators" \</span><br><span class="line">"extras;google;webdriver" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha2" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha3" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha4" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha5" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha6" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha7" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha8" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-alpha9" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-beta1" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-beta2" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-beta3" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-beta4" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.0-beta5" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.1" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha2" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha3" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha4" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha5" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha6" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha7" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha8" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-alpha9" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta1" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta2" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta3" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta4" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.0-beta5" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.1" \</span><br><span class="line">"extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" \</span><br><span class="line">"lldb;2.0" \</span><br><span class="line">"lldb;2.1" \</span><br><span class="line">"lldb;2.2" \</span><br><span class="line">"lldb;2.3" \</span><br><span class="line">"lldb;3.0" \</span><br><span class="line">"lldb;3.1" \</span><br><span class="line">"ndk-bundle" \</span><br><span class="line">"patcher;v4" \</span><br><span class="line">"platform-tools" \</span><br><span class="line">"platforms;android-10" \</span><br><span class="line">"platforms;android-11" \</span><br><span class="line">"platforms;android-12" \</span><br><span class="line">"platforms;android-13" \</span><br><span class="line">"platforms;android-14" \</span><br><span class="line">"platforms;android-15" \</span><br><span class="line">"platforms;android-16" \</span><br><span class="line">"platforms;android-17" \</span><br><span class="line">"platforms;android-18" \</span><br><span class="line">"platforms;android-19" \</span><br><span class="line">"platforms;android-20" \</span><br><span class="line">"platforms;android-21" \</span><br><span class="line">"platforms;android-22" \</span><br><span class="line">"platforms;android-23" \</span><br><span class="line">"platforms;android-24" \</span><br><span class="line">"platforms;android-25" \</span><br><span class="line">"platforms;android-26" \</span><br><span class="line">"platforms;android-27" \</span><br><span class="line">"platforms;android-28" \</span><br><span class="line">"platforms;android-7" \</span><br><span class="line">"platforms;android-8" \</span><br><span class="line">"platforms;android-9" \</span><br><span class="line">"platforms;android-Q" \</span><br><span class="line">"tools"</span><br><span class="line"></span><br><span class="line">echo "install ndk"</span><br><span class="line">wget -O /tmp/android-ndk-r13b-linux-x86_64.zip https://dl.google.com/android/repository/android-ndk-r13b-linux-x86_64.zip</span><br><span class="line">mkdir -p /vdb/android-ndk-linux</span><br><span class="line">unzip /tmp/android-ndk-r13b-linux-x86_64.zip -d /vdb/android-ndk-linux/</span><br><span class="line">echo 'export ANDROID_NDK_HOME=/usr/local/android-ndk-linux/android-ndk-r13b' &gt;&gt; /etc/profile</span><br><span class="line">echo 'export PATH=$ANDROID_NDK_HOME:$PATH'  &gt;&gt; /etc/profile</span><br><span class="line">source /etc/profile</span><br><span class="line"></span><br><span class="line">echo "clean up"</span><br><span class="line">rm -rf /tmp/*</span><br><span class="line"></span><br><span class="line">echo "done!"</span><br><span class="line">read -p "--- Press any key to continue ---"</span><br></pre></td></tr></table></figure><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>首先为自己好久没有写文感到愧疚一次；<br>然后为自己写了这样一篇笔记版文字感到愧疚一次；<br>希望以后能够赶紧把draft里面的文章都写完整，也希望赶紧把已经过时的文章更新一下。<br>最后，还是感谢大家的关注和评论~<br>撒花~✿✿ヽ(°▽°)ノ✿~</p></div><div><div id="reward-container"><div>坚持原创！欢迎各位客官给我打赏买小饼干吖！✿✿ヽ(°▽°)ノ✿</div> <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';"> 打赏</button><div id="qr" style="display:none"><div style="display:inline-block"> <img src="/images/wechatpay.png" alt="Miaia 微信支付"><p>微信支付</p></div><div style="display:inline-block"> <img src="/images/alipay.png" alt="Miaia 支付宝"><p>支付宝</p></div></div></div></div><div><ul class="post-copyright"><li class="post-copyright-author"> <strong>本文作者：</strong> Miaia</li><li class="post-copyright-link"> <strong>本文链接：</strong> <a href="https://11.tt/posts/2019/install-android-build-environment/" title="使用sdkmanager一键安装安卓编译环境">https://11.tt/posts/2019/install-android-build-environment/</a></li><li class="post-copyright-license"> <strong>版权声明：</strong> 本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div><footer class="post-footer"><div class="post-tags"> <a href="/tags/Android/" rel="tag"># Android</a> <a href="/tags/build/" rel="tag"># build</a> <a href="/tags/devops/" rel="tag"># devops</a> <a href="/tags/sdk/" rel="tag"># sdk</a> <a href="/tags/java/" rel="tag"># java</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/posts/2018/how-to-update-hexo-theme-next/" rel="next" title="教你顺滑升级6.x版本的NexT主题"><i class="fa fa-chevron-left"></i> 教你顺滑升级6.x版本的NexT主题</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"></div></div></footer></div></article></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> 站点概览</li></ul><div class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Miaia"><p class="site-author-name" itemprop="name">Miaia</p><div class="site-description motion-element" itemprop="description">别提概念，只解决问题。</div></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">8</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/"><span class="site-state-item-count">2</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/"><span class="site-state-item-count">33</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/miaia" title="GitHub &rarr; https://github.com/miaia" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i> GitHub</a></span><span class="links-of-author-item"><a href="mailto:1@11.tt" title="E-Mail &rarr; mailto:1@11.tt"><i class="fa fa-fw fa-envelope"></i> E-Mail</a></span></div><div class="cc-license motion-element" itemprop="license"> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a></div></div></div><div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装JDK"><span class="nav-number">2.</span> <span class="nav-text">安装JDK</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装sdkmanager"><span class="nav-number">3.</span> <span class="nav-text">安装sdkmanager</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装安卓sdk和ndk"><span class="nav-number">4.</span> <span class="nav-text">安装安卓sdk和ndk</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装sdk"><span class="nav-number">4.1.</span> <span class="nav-text">安装sdk</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装ndk"><span class="nav-number">4.2.</span> <span class="nav-text">安装ndk</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#完整shell文件"><span class="nav-number">5.</span> <span class="nav-text">完整shell文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div></div></div></div></aside><div id="sidebar-dimmer"></div></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span><span class="with-love" id="animate"><i class="fa fa-fas fa-heartbeat"></i></span> <span class="author" itemprop="copyrightHolder">Miaia</span></div><div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.7.1</div> <span class="post-meta-divider">|</span><div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> <span class="site-pv" title="总访问量">栈内已经接待了<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>个元素啦w</span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script>"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script src="//cdn.jsdelivr.net/npm/jquery@2/dist/jquery.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js"></script><script src="/js/utils.js?v=7.1.0"></script><script src="/js/motion.js?v=7.1.0"></script><script src="/js/schemes/muse.js?v=7.1.0"></script><script src="/js/scrollspy.js?v=7.1.0"></script><script src="/js/post-details.js?v=7.1.0"></script><script src="/js/next-boot.js?v=7.1.0"></script><script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST=["nick","mail","link"],guest="nick,mail,link";guest=guest.split(",").filter(function(e){return-1<GUEST.indexOf(e)}),new Valine({el:"#comments",verify:!0,notify:!0,appId:"1737M61wconDeU7FLHRpwTiD-gzGzoHsz",appKey:"7exFFNYzJ6C9nWOlA0axIWu1",placeholder:"ヾﾉ≧∀≦)o来啊，快活啊!",avatar:"mm",meta:guest,pageSize:"10",visitor:!1,lang:"zh-cn"})</script><script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1/bookmark.min.js"></script><script>bookmark.scrollToMark("auto","#更多")</script><script>!function(a,t,c){t.ChatraID="";var h=a.createElement("script");t[c]=t[c]||function(){(t[c].q=t[c].q||[]).push(arguments)},h.async=!0,h.src="https://call.chatra.io/chatra.js",a.head&&a.head.appendChild(h)}(document,window,"Chatra")</script><script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.0.5/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{scale:1,hHeadPos:.5,vHeadPos:.618,jsonPath:"/live2dw/assets/Pio.model.json"},display:{superSample:2,width:150,height:150,position:"left",hOffset:30,vOffset:-20},mobile:{show:!1,scale:.05},react:{opacityDefault:1,opacityOnHover:.2},log:!1})</script></body></html>

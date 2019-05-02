@@ -1,0 +1,414 @@
+<!DOCTYPE html><html class="theme-next muse use-motion" lang="zh-CN"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=2"><meta name="theme-color" content="#222"><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.2/css/font-awesome.min.css"><link rel="stylesheet" href="/css/main.css?v=7.1.0"><link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.0"><link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico?v=7.1.0"><link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico?v=7.1.0"><link rel="mask-icon" href="/images/logo.svg?v=7.1.0" color="#222"><script id="hexo.configurations">var NexT=window.NexT||{},CONFIG={root:"/",scheme:"Muse",version:"7.1.0",sidebar:{position:"left",display:"post",offset:12,onmobile:!1,dimmer:!0},back2top:!0,back2top_sidebar:!1,fancybox:!1,fastclick:!1,lazyload:!0,tabs:!0,motion:{enable:!0,async:!1,transition:{post_block:"fadeIn",post_header:"slideDownIn",post_body:"slideDownIn",coll_header:"slideLeftIn",sidebar:"slideUpIn"}},algolia:{applicationID:"",apiKey:"",indexName:"",hits:{per_page:10},labels:{input_placeholder:"Search for Posts",hits_empty:"We didn't find any results for the search: ${query}",hits_stats:"${hits} results found in ${time} ms"}}}</script><meta name="description" content="因为之前有很长一段时间没有更新，所以博客使用的 NexT 主题已经从 6.3.0 更新到了 6.4.1。而作为一个新世纪的好青年，我们自然是要像早上八九点钟的太阳，时时刻刻对新鲜事物保持兴趣。于是我便积极地想要将主题升级到最新版本，过程也很简单，话不多说，请看全文٩(๑❛ᴗ❛๑)۶"><meta name="keywords" content="Hexo,Git,update,hexo-theme-next,theme,next"><meta property="og:type" content="article"><meta property="og:title" content="教你顺滑升级6.x版本的NexT主题"><meta property="og:url" content="https://11.tt/posts/2018/how-to-update-hexo-theme-next/index.html"><meta property="og:site_name" content="十一種情緒的堆棧"><meta property="og:description" content="因为之前有很长一段时间没有更新，所以博客使用的 NexT 主题已经从 6.3.0 更新到了 6.4.1。而作为一个新世纪的好青年，我们自然是要像早上八九点钟的太阳，时时刻刻对新鲜事物保持兴趣。于是我便积极地想要将主题升级到最新版本，过程也很简单，话不多说，请看全文٩(๑❛ᴗ❛๑)۶"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://11.tt/posts/2018/how-to-update-hexo-theme-next/how-to-update-hexo-theme-next.png"><meta property="og:updated_time" content="2019-04-21T06:49:03.211Z"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="教你顺滑升级6.x版本的NexT主题"><meta name="twitter:description" content="因为之前有很长一段时间没有更新，所以博客使用的 NexT 主题已经从 6.3.0 更新到了 6.4.1。而作为一个新世纪的好青年，我们自然是要像早上八九点钟的太阳，时时刻刻对新鲜事物保持兴趣。于是我便积极地想要将主题升级到最新版本，过程也很简单，话不多说，请看全文٩(๑❛ᴗ❛๑)۶"><meta name="twitter:image" content="https://11.tt/posts/2018/how-to-update-hexo-theme-next/how-to-update-hexo-theme-next.png"><link rel="alternate" href="/atom.xml" title="十一種情緒的堆棧" type="application/atom+xml"><link rel="canonical" href="https://11.tt/posts/2018/how-to-update-hexo-theme-next/"><script id="page.configurations">CONFIG.page={sidebar:""}</script><title>教你顺滑升级6.x版本的NexT主题 | 十一種情緒的堆棧</title><script async src="//www.googletagmanager.com/gtag/js?id=UA-120626710-1"></script><script>var host=window.location.hostname;if("localhost"!==host){function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","UA-120626710-1")}</script><noscript><style>.sidebar-inner,.use-motion .brand,.use-motion .collection-title,.use-motion .comments,.use-motion .menu-item,.use-motion .motion-element,.use-motion .pagination,.use-motion .post-block,.use-motion .post-body,.use-motion .post-header{opacity:initial}.use-motion .logo,.use-motion .site-subtitle,.use-motion .site-title{opacity:initial;top:initial}.use-motion .logo-line-before i{left:initial}.use-motion .logo-line-after i{right:initial}</style></noscript></head><body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN"><div class="container sidebar-position-left page-post-detail"><div class="headband"></div><header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="header-inner"><div class="site-brand-wrapper"><div class="site-meta"><div class="custom-logo-site-title"><a href="/" class="brand" rel="start"><span class="logo-line-before"><i></i></span> <span class="site-title">十一種情緒的堆棧</span><span class="logo-line-after"><i></i></span></a></div><p class="site-subtitle">别提概念，只解决问题。</p></div><div class="site-nav-toggle"> <button aria-label="切换导航栏"><span class="btn-bar"></span><span class="btn-bar"></span><span class="btn-bar"></span></button></div></div><nav class="site-nav"><ul id="menu" class="menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i><br>首页</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i><br>分类<span class="badge">2</span></a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i><br>标签<span class="badge">33</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i><br>归档<span class="badge">8</span></a></li><li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i><br>关于</a></li><li class="menu-item menu-item-search"><a href="javascript:;" class="popup-trigger"><i class="menu-item-icon fa fa-search fa-fw"></i><br>搜索</a></li></ul><div class="site-search"><div class="popup search-popup local-search-popup"><div class="local-search-header clearfix"><span class="search-icon"><i class="fa fa-search"></i></span><span class="popup-btn-close"><i class="fa fa-times-circle"></i></span><div class="local-search-input-wrapper"> <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input"></div></div><div id="local-search-result"></div></div></div></nav></div></header><main id="main" class="main"><div class="main-inner"><div class="content-wrap"><div id="content" class="content"><div id="posts" class="posts-expand"><article class="post post-type-normal" itemscope itemtype="http://schema.org/Article"><div class="post-block"><link itemprop="mainEntityOfPage" href="https://11.tt/posts/2018/how-to-update-hexo-theme-next/"><span hidden itemprop="author" itemscope itemtype="http://schema.org/Person"><meta itemprop="name" content="Miaia"><meta itemprop="description" content="别提概念，只解决问题。"><meta itemprop="image" content="/images/avatar.jpg"></span><span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization"><meta itemprop="name" content="十一種情緒的堆棧"></span><header class="post-header"><h1 class="post-title" itemprop="name headline">教你顺滑升级6.x版本的NexT主题</h1><div class="post-meta"><span class="post-time"><span class="post-meta-item-icon"><i class="fa fa-calendar-o"></i></span> <span class="post-meta-item-text">发表于</span> <time title="创建时间：2018-09-23 20:00:00" itemprop="dateCreated datePublished" datetime="2018-09-23T20:00:00+08:00">2018-09-23</time></span> <span class="post-category"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-folder-o"></i></span> <span class="post-meta-item-text">分类于</span> <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Hexo/" itemprop="url" rel="index"><span itemprop="name">Hexo</span></a></span></span> <span class="post-comments-count"><span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-comment-o"></i></span> <span class="post-meta-item-text">评论数：</span><a href="/posts/2018/how-to-update-hexo-theme-next/#comments" itemprop="discussionUrl"><span class="post-comments-count valine-comment-count" data-xid="/posts/2018/how-to-update-hexo-theme-next/" itemprop="commentCount"></span></a></span> <span class="post-meta-divider">|</span><span class="post-meta-item-icon"><i class="fa fa-eye"></i> 阅读次数：<span class="busuanzi-value" id="busuanzi_value_page_pv"></span></span></div></header><div class="post-body" itemprop="articleBody"><p><img src="/posts/2018/how-to-update-hexo-theme-next/how-to-update-hexo-theme-next.png" alt="how-to-update-hexo-theme-next"></p><p>因为之前有很长一段时间没有更新，所以博客使用的 NexT 主题已经从 6.3.0 更新到了 6.4.1。<br>而作为一个新世纪的好青年，我们自然是要像早上八九点钟的太阳，时时刻刻对新鲜事物保持兴趣。<br>于是我便积极地想要将主题升级到最新版本，过程也很简单，话不多说，请看全文٩(๑❛ᴗ❛๑)۶</p><a id="more"></a><h1 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h1><p>这篇文章主要说的是从 <code>hexo-theme-next</code> 6.x 版本升级到最新版本（文章发布时为6.4.1）的过程。<br>如果你的 <code>hexo-theme-next</code> 版本处于 5.x 版本，请到这里查看官方文档→<a href="https://github.com/theme-next/hexo-theme-next/blob/master/docs/zh-CN/UPDATE-FROM-5.1.X.md" target="_blank" rel="noopener">从 NexT v5.1.x 更新</a>。<br>官方文档中提到了使用 <code>Hexo 数据文件特性</code> 来解决更新时可能遇到的冲突错误，但是我在使用该方法时觉得不如使用 git 的某些功能来绕过这样的问题，直接解决更新时的冲突错误，平滑更新。<br>所以与其说这篇文章在教大家如何升级 <code>hexo-theme-next</code> 版本，倒不如说在教大家如何使用 git 的某些功能。<br><strong>此处推荐大家安装 Visual Studio Code，这个工具能够非常方便地为大家提供代码冲突时的帮助。</strong><br>本文中升级 <code>hexo-theme-next</code> 版本时所使用到的环境和工具如下：</p><pre><code>* Windows 10 1803
+* Visual Studio Code 1.27.2 (user setup)
+* node-v8.11.2-x64
+* git version 2.17.1.windows.2
+* hexo-v3.7.1
+* NexT.Muse v6.3.0
+* 善于观察的眼睛一双
+</code></pre><p><strong>重要提示！！！</strong><br>如果你对 Git 这个源代码管理工具不是很熟悉，或者对自己的操作心里没底：<br><strong>请将整个博客的目录备份！！！</strong><br><strong>请将整个博客的目录备份！！！</strong><br><strong>请将整个博客的目录备份！！！</strong><br>好的，让我们开始升级(　 ´-ω ･)▄︻┻┳══━一</p><h1 id="升级NexT版本"><a href="#升级NexT版本" class="headerlink" title="升级NexT版本"></a>升级NexT版本</h1><p>我们可以通过在博客根目录执行以下命令来升级到最新的 <code>hexo-theme-next</code> 版本：</p><pre><code>$ cd themes/next
+$ git pull
+</code></pre><p>其中，第一条命令的功能是进入到 next 主题的目录中，因为我们是要升级这个主题的版本，接下来的操作都要在这个目录中完成。<br>而第二条命令在这里是从最初克隆这个主题的仓库获取最新的数据并 <strong>自动尝试合并到当前所在的分支</strong> 。<br>如果你在执行完这两条命令之后没有任何报错，那么恭喜你！！！你的更新已经成功了！！！<br>然而，除非你特意将配置文件分离（实质上使用了 <code>Hexo 数据文件特性</code>），否则一般情况下，你都会遇到类似这样的情况：</p><pre><code>$ git pull
+remote: Counting objects: 273, done.
+remote: Compressing objects: 100% (43/43), done.
+remote: Total 273 (delta 127), reused 134 (delta 111), pack-reused 117
+Receiving objects: 100% (273/273), 86.19 KiB | 125.00 KiB/s, done.
+Resolving deltas: 100% (167/167), completed with 67 local objects.
+From https://github.com/theme-next/hexo-theme-next
+ffde8fe..9ec34d3  master     -&gt; origin/master
+* [new tag]         v6.4.0     -&gt; v6.4.0
+* [new tag]         v6.4.1     -&gt; v6.4.1
+error: Your local changes to the following files would be overwritten by merge:
+        _config.yml
+Please commit your changes or stash them before you merge.
+Aborting
+Updating ffde8fe..9ec34d3
+</code></pre><p>其中的报错的信息为：</p><pre><code>error: Your local changes to the following files would be overwritten by merge:
+        _config.yml
+Please commit your changes or stash them before you merge.
+</code></pre><p>这部分内容告诉我们，我们本地有一个文件 <code>_config.yml</code> 经过了修改，和远程仓库的内容不一样造成了冲突，如果强行合并，则本地文件会被覆盖。<br>并且提示我们，让我们在合并之前先将修改提交（commit）或者储藏（stash）。<br>如果你和我遇到了一样的情况，那么请继续阅读，这部分就是本文的重点，<a href="#处理升级时的冲突">下一章节</a>中，我将和大家分享我处理这个问题的详细流程，也即是我们升级的过程。</p><h1 id="处理升级时的冲突"><a href="#处理升级时的冲突" class="headerlink" title="处理升级时的冲突"></a>处理升级时的冲突</h1><p>在这一章节中，我们将要解决升级 NexT 主题时出现的冲突问题，并且实质性地完成版本升级的过程。<br>我们需要多次使用 git 命令来进行一系列操作，并且需要打开冲突的文件进行目视处理。</p><h2 id="将修改储藏到暂存区"><a href="#将修改储藏到暂存区" class="headerlink" title="将修改储藏到暂存区"></a>将修改储藏到暂存区</h2><p>我们可以通过 <code>git stash</code> 这句命令将对主题文件的修改储存到本地的暂存区：</p><pre><code>$ git stash
+Saved working directory and index state WIP on master: ffde8fe Reverted #254 pull.
+</code></pre><p>通过执行该命令的输出我们可以知道我们已经将修改储存到了本地的暂存区，接下来我们需要执行更新，请继续看<a href="#执行更新">下一章节</a>。</p><h2 id="执行更新"><a href="#执行更新" class="headerlink" title="执行更新"></a>执行更新</h2><p>我们现在需要再次使用 <code>git pull</code> 命令来获取最新的主题文件，别担心，这次不会再有上面的错误了：</p><pre><code>$ git pull
+Updating ffde8fe..9ec34d3
+Fast-forward
+.github/CONTRIBUTING.md                            |  54 ++
+README.md                                          |  56 +-
+_config.yml                                        |  56 +-
+...
+source/js/src/scrollspy.js                         | 195 +++--
+source/js/src/utils.js                             | 175 +++--
+66 files changed, 1158 insertions(+), 1941 deletions(-)
+delete mode 100644 layout/_partials/share/jiathis.swig
+...
+delete mode 100644 source/css/_common/components/third-party/jiathis.styl
+</code></pre><p>再次执行 <code>git pull</code> 命令后我们可以看到类似以上的输出，这样我们的主题就已经更新完成了。<br>那么现在，我们需要将之前的配置恢复到新版本的主题当中，即从暂存区取出修改过的内容，请继续看<a href="#从暂存区取出修改">下一章节</a>。</p><h2 id="从暂存区取出修改"><a href="#从暂存区取出修改" class="headerlink" title="从暂存区取出修改"></a>从暂存区取出修改</h2><p>我们现在要通过执行 <code>git stash pop</code> 这句命令来从暂存区取出修改，我们可以得到类似以下的输出：</p><pre><code>$ git stash pop
+Auto-merging _config.yml
+On branch master
+Your branch is up to date with &apos;origin/master&apos;.
+
+Changes not staged for commit:
+(use &quot;git add &lt;file&gt;...&quot; to update what will be committed)
+(use &quot;git checkout -- &lt;file&gt;...&quot; to discard changes in working directory)
+
+        modified:   _config.yml
+
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+Dropped refs/stash@{0} (3b73b30...4b77e8e)
+</code></pre><p>其中，<code>modified: _config.yml</code> 这一行用红色标注了出来，说明这个文件在取出修改进行自动合并时被修改了。<br>如果你看到了以上的输出，那么你的更新到此就已经成功啦~<br>但如果你在执行 <code>git stash pop</code> 这句命令后，更加不幸地看到了输出是类似下方的内容：</p><pre><code>$ git stash pop
+Auto-merging _config.yml
+CONFLICT (content): Merge conflict in _config.yml
+</code></pre><p>那么说明自动合并无法为你自动解决这些冲突，需要你手动进行处理。<br>事到如今，我们距离成功已经是临门一脚，那么让我们趁热打铁，继续看<a href="#解决冲突">下一章节</a>。</p><h2 id="解决冲突"><a href="#解决冲突" class="headerlink" title="解决冲突"></a>解决冲突</h2><p>我们在主题文件夹下找到 <code>_config.yml</code> 这个文件，在其中我们可以非常容易地看到类似以下的不同：</p><pre><code>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream
+enable: false # When enable is set to be true, leancloud_visitors is recommended to be closed for the re-initialization problem within different leancloud adk version.
+appid:  # your leancloud application appid
+appkey:  # your leancloud application appkey
+notify: false # mail notifier , https://github.com/xCss/Valine/wiki
+verify: false # Verification code
+placeholder: Just go go # comment box placeholder
+avatar: mm # gravatar style
+guest_info: nick,mail,link # custom comment header
+pageSize: 10 # pagination size
+visitor: false # leancloud-counter-security is not supported for now. When visitor is set to be true, appid and appkey are recommended to be the same as leancloud_visitors&apos; for counter compatibility. Article reading statistic https://valine.js.org/visitor.html
+=======
+enable: true
+appid:  U7aB9evsRQXXqCqnPXG3cCjS-9Nh9j0Va # your leancloud application appid
+appkey: 38D4FiUTxAYvTNaoAuF9Rm8G          # your leancloud application appkey
+notify: true                              # mail notifier , https://github.com/xCss/Valine/wiki
+verify: true                              # Verification code
+placeholder: ヾﾉ≧∀≦)o来啊，快活啊!          # comment box placeholder
+avatar: hide                                # gravatar style
+guest_info: nick,mail,link                # custom comment header
+pageSize: 10                              # pagination size
+visitor: false                            # leancloud-counter-security is not supported for now. When visitor is set to be true, appid and appkey are recommended to be the same as leancloud_visitors&apos; for counter compatibility. Article reading statistic https://valine.js.org/visitor.html
+&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes
+</code></pre><p>在以等号分隔的上方是这次 <code>git pull</code> 拉取到的内容，而下方就是我们对该文件修改后的内容，很显然，这两部分内容因为不一样的特别多，自动合并无法确定哪些可以覆盖，所以产生了冲突。<br>如果你使用了类似于 VS Code 这样的工具，一般你打开这个文件都会让你选择哪一部分进行保留，这也是推荐大家使用这样工具的原因。<br>当然了，不使用这种工具，你也可以直接目视内容，然后删除不需要的内容，保留原本修改过的内容即可，修改后变回了这样：</p><pre><code>...
+enable: true
+appid:  U7aB9evsRQXXqCqnPXG3cCjS-9Nh9j0Va # your leancloud application appid
+appkey: 38D4FiUTxAYvTNaoAuF9Rm8G          # your leancloud application appkey
+notify: true                              # mail notifier , https://github.com/xCss/Valine/wiki
+verify: true                              # Verification code
+placeholder: ヾﾉ≧∀≦)o来啊，快活啊!          # comment box placeholder
+avatar: hide                                # gravatar style
+guest_info: nick,mail,link                # custom comment header
+pageSize: 10                              # pagination size
+visitor: false                            # leancloud-counter-security is not supported for now. When visitor is set to be true, appid and appkey are recommended to be the same as leancloud_visitors&apos; for counter compatibility. Article reading statistic https://valine.js.org/visitor.html
+...
+</code></pre><p>然后我们再次在主题根目录执行 <code>git pull</code> 这句命令，可以看到类似这样的输出：</p><pre><code>$ git pull
+Already up to date.
+</code></pre><p>恭喜恭喜！我们的升级终于成功完成！</p><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>总体来说，使用这样的命令能够让大家不需要重新整理配置，并且可以在升级时审阅你使用到特性的更新部分，并手动选择需要更新的内容。<br>我觉得这样的更新方式更加能够让人清楚地知道自己到底更新了什么，做了什么。<br>甚至，在更新的过程当中，会发现很多新的功能，能够进行添加。<br>当然了，这篇文章中对 git 的使用只能算是皮毛而已，如果有什么不正确的，或者需要补充的，或者有什么疑问，请大家在下方的评论中给我指出呀~</p><p>PS. 这篇文章应该是 Hexo 系列的最后一篇文章了，我朋友问我为什么还不写站点 SEO 的文章。<br>因为我觉得大家可以搜索到很多类似的相关文章，我对 SEO 的了解不是很全面，写出来的文章相比于他们就像洗文一样，所以打算在经过详细了解和尝试之后在后续推出一篇相关的文章。<br><strong>另外！！！！！！！</strong><br>我的站点已经出现在<a href="https://github.com/theme-next/hexo-theme-next" target="_blank" rel="noopener">hexo-theme-next</a>的 Github 主页 README 中 Live Preview 列表中啦！！！<br>多多点击啦！✿✿ヽ(°▽°)ノ✿<br>写完了文章，今天也是棒棒哒~(｡≧3≦)ﾉ⌒☆</p></div><div><div id="reward-container"><div>坚持原创！欢迎各位客官给我打赏买小饼干吖！✿✿ヽ(°▽°)ノ✿</div> <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';"> 打赏</button><div id="qr" style="display:none"><div style="display:inline-block"> <img src="/images/wechatpay.png" alt="Miaia 微信支付"><p>微信支付</p></div><div style="display:inline-block"> <img src="/images/alipay.png" alt="Miaia 支付宝"><p>支付宝</p></div></div></div></div><div><ul class="post-copyright"><li class="post-copyright-author"> <strong>本文作者：</strong> Miaia</li><li class="post-copyright-link"> <strong>本文链接：</strong> <a href="https://11.tt/posts/2018/how-to-update-hexo-theme-next/" title="教你顺滑升级6.x版本的NexT主题">https://11.tt/posts/2018/how-to-update-hexo-theme-next/</a></li><li class="post-copyright-license"> <strong>版权声明：</strong> 本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i> BY-NC-SA</a> 许可协议。转载请注明出处！</li></ul></div><footer class="post-footer"><div class="post-tags"> <a href="/tags/Hexo/" rel="tag"># Hexo</a> <a href="/tags/Git/" rel="tag"># Git</a> <a href="/tags/update/" rel="tag"># update</a> <a href="/tags/hexo-theme-next/" rel="tag"># hexo-theme-next</a> <a href="/tags/theme/" rel="tag"># theme</a> <a href="/tags/next/" rel="tag"># next</a></div><div class="post-nav"><div class="post-nav-next post-nav-item"><a href="/posts/2018/how-to-play-with-live2d-on-hexo/" rel="next" title="用Live2D让看板喵入住你的Hexo博客吧\(^o^)/~"><i class="fa fa-chevron-left"></i> 用Live2D让看板喵入住你的Hexo博客吧\(^o^)/~</a></div><span class="post-nav-divider"></span><div class="post-nav-prev post-nav-item"> <a href="/posts/2019/install-android-build-environment/" rel="prev" title="使用sdkmanager一键安装安卓编译环境">使用sdkmanager一键安装安卓编译环境<i class="fa fa-chevron-right"></i></a></div></div></footer></div></article></div></div><div class="comments" id="comments"></div></div><div class="sidebar-toggle"><div class="sidebar-toggle-line-wrap"><span class="sidebar-toggle-line sidebar-toggle-line-first"></span><span class="sidebar-toggle-line sidebar-toggle-line-middle"></span><span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id="sidebar" class="sidebar"><div class="sidebar-inner"><ul class="sidebar-nav motion-element"><li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap"> 文章目录</li><li class="sidebar-nav-overview" data-target="site-overview-wrap"> 站点概览</li></ul><div class="site-overview-wrap sidebar-panel"><div class="site-overview"><div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person"> <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Miaia"><p class="site-author-name" itemprop="name">Miaia</p><div class="site-description motion-element" itemprop="description">别提概念，只解决问题。</div></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"> <a href="/archives/"><span class="site-state-item-count">8</span> <span class="site-state-item-name">日志</span></a></div><div class="site-state-item site-state-categories"> <a href="/categories/"><span class="site-state-item-count">2</span> <span class="site-state-item-name">分类</span></a></div><div class="site-state-item site-state-tags"> <a href="/tags/"><span class="site-state-item-count">33</span> <span class="site-state-item-name">标签</span></a></div></nav><div class="feed-link motion-element"><a href="/atom.xml" rel="alternate"><i class="fa fa-rss"></i> RSS</a></div><div class="links-of-author motion-element"><span class="links-of-author-item"><a href="https://github.com/miaia" title="GitHub &rarr; https://github.com/miaia" rel="noopener" target="_blank"><i class="fa fa-fw fa-github"></i> GitHub</a></span><span class="links-of-author-item"><a href="mailto:1@11.tt" title="E-Mail &rarr; mailto:1@11.tt"><i class="fa fa-fw fa-envelope"></i> E-Mail</a></span></div><div class="cc-license motion-element" itemprop="license"> <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a></div></div></div><div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class="post-toc"><div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#升级NexT版本"><span class="nav-number">2.</span> <span class="nav-text">升级NexT版本</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#处理升级时的冲突"><span class="nav-number">3.</span> <span class="nav-text">处理升级时的冲突</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#将修改储藏到暂存区"><span class="nav-number">3.1.</span> <span class="nav-text">将修改储藏到暂存区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行更新"><span class="nav-number">3.2.</span> <span class="nav-text">执行更新</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#从暂存区取出修改"><span class="nav-number">3.3.</span> <span class="nav-text">从暂存区取出修改</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解决冲突"><span class="nav-number">3.4.</span> <span class="nav-text">解决冲突</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">4.</span> <span class="nav-text">总结</span></a></li></ol></div></div></div></div></aside><div id="sidebar-dimmer"></div></div></main><footer id="footer" class="footer"><div class="footer-inner"><div class="copyright">&copy; 2018 – <span itemprop="copyrightYear">2019</span><span class="with-love" id="animate"><i class="fa fa-fas fa-heartbeat"></i></span> <span class="author" itemprop="copyrightHolder">Miaia</span></div><div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.7.1</div> <span class="post-meta-divider">|</span><div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> v7.1.0</div><div class="busuanzi-count"><script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script> <span class="site-pv" title="总访问量">栈内已经接待了<span class="busuanzi-value" id="busuanzi_value_site_pv"></span>个元素啦w</span></div></div></footer><div class="back-to-top"><i class="fa fa-arrow-up"></i> <span id="scrollpercent"><span>0</span>%</span></div></div><script>"[object Function]"!==Object.prototype.toString.call(window.Promise)&&(window.Promise=null)</script><script src="//cdn.jsdelivr.net/npm/jquery@2/dist/jquery.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/jquery_lazyload/1.9.7/jquery.lazyload.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.min.js"></script><script src="//cdnjs.cloudflare.com/ajax/libs/velocity/1.2.1/velocity.ui.min.js"></script><script src="/js/utils.js?v=7.1.0"></script><script src="/js/motion.js?v=7.1.0"></script><script src="/js/schemes/muse.js?v=7.1.0"></script><script src="/js/scrollspy.js?v=7.1.0"></script><script src="/js/post-details.js?v=7.1.0"></script><script src="/js/next-boot.js?v=7.1.0"></script><script src="//cdn1.lncld.net/static/js/3.11.1/av-min.js"></script><script src="https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js"></script><script>var GUEST=["nick","mail","link"],guest="nick,mail,link";guest=guest.split(",").filter(function(e){return-1<GUEST.indexOf(e)}),new Valine({el:"#comments",verify:!0,notify:!0,appId:"1737M61wconDeU7FLHRpwTiD-gzGzoHsz",appKey:"7exFFNYzJ6C9nWOlA0axIWu1",placeholder:"ヾﾉ≧∀≦)o来啊，快活啊!",avatar:"mm",meta:guest,pageSize:"10",visitor:!1,lang:"zh-cn"})</script><script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script><script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-bookmark@1/bookmark.min.js"></script><script>bookmark.scrollToMark("auto","#更多")</script><script>!function(a,t,c){t.ChatraID="";var h=a.createElement("script");t[c]=t[c]||function(){(t[c].q=t[c].q||[]).push(arguments)},h.async=!0,h.src="https://call.chatra.io/chatra.js",a.head&&a.head.appendChild(h)}(document,window,"Chatra")</script><script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.0.5/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({pluginRootPath:"live2dw/",pluginJsPath:"lib/",pluginModelPath:"assets/",tagMode:!1,debug:!1,model:{scale:1,hHeadPos:.5,vHeadPos:.618,jsonPath:"/live2dw/assets/Pio.model.json"},display:{superSample:2,width:150,height:150,position:"left",hOffset:30,vOffset:-20},mobile:{show:!1,scale:.05},react:{opacityDefault:1,opacityOnHover:.2},log:!1})</script></body></html>
